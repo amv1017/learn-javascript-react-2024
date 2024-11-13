@@ -4,10 +4,12 @@ import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <>
-    <h1 style={{ margin: "15px", fontSize: "24px" }}>Restaurants</h1>
-    {restaurants.map((r) => (
-      <div className="part" key={r.id}>
-        <h1 style={{ textAlign: "center", fontSize: "22px" }}>{r.name}</h1>
+    <div className="title">
+      <h1>Restaurants</h1>
+    </div>
+    {restaurants.map((restaurant) => (
+      <div className="part" key={restaurant.id}>
+        <h2>{restaurant.name}</h2>
 
         <table>
           <tr>
@@ -16,7 +18,7 @@ createRoot(document.getElementById("root")).render(
             <th>Price</th>
           </tr>
 
-          {r.menu.map((e) => (
+          {restaurant.menu.map((e) => (
             <tr key={e.id}>
               <td width={"40%"}>{e.name}</td>
               <td>{e.ingredients.join(", ")}</td>
@@ -28,10 +30,10 @@ createRoot(document.getElementById("root")).render(
         <hr style={{ margin: "20px" }} />
 
         <ul>
-          {r.reviews.map((e) => (
+          {restaurant.reviews.map((e) => (
             <li key={e.id}>
               <p style={{ display: "flex", justifyContent: "space-evenly" }}>
-                <h2>{e.user}</h2>
+                <h4>{e.user}</h4>
                 <span style={{ color: "orange" }}>
                   {[...Array(+e.rating)].map(() => "★").join("")}
                 </span>
