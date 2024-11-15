@@ -7,19 +7,24 @@
 
 body {
   background: lightsteelblue;
+  position: relative;
+  min-height: 100vh;
 }
 
 .title {
   margin: 10px;
 }
 
-.part {
-  width: 50%;
+.restaurant {
   border: 1px #333 solid;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
   background: steelblue;
+}
+
+.part h2 {
+  text-align: center;
 }
 
 table {
@@ -42,10 +47,69 @@ ul {
 
 li {
   list-style: none;
-  width: 45%;
+}
+
+ul.nav {
+  justify-content: space-between;
+  place-self: center;
+  width: 50vw;
+}
+
+li.review {
+  width: 300px;
   padding: 15px;
   margin: 10px;
   border-radius: 10px;
   background: navy;
   color: #fff;
+}
+
+li.nav {
+  background: lightsteelblue;
+  color: #000;
+  border: 1px #333 solid;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+li.nav.active {
+  background: steelblue;
+  color: #fff;
+}
+
+.amount {
+  display: flex;
+  justify-content: space-around;
+}
+
+.amount button {
+  border: none;
+  width: 30px;
+  background: navy;
+  color: #fff;
+  border-radius: 5px;
+  line-height: 1.5rem;
+}
+
+header {
+  text-align: center;
+  color: #000;
+  background: #65a;
+}
+
+nav {
+  background: #65a;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-bottom: 10px;
+}
+
+footer {
+  background: #65a;
+  color: #fff;
+  text-align: end;
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
 }
