@@ -34,4 +34,4 @@ const App = ({ restaurants = restaurants_mock }) => {
   );
 };
 
-export default App;
+export { App };
