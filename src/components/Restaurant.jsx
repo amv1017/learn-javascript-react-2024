@@ -1,9 +1,7 @@
-import Menu from "./Menu";
-import Reviews from "./Reviews";
+import { Menu } from "./Menu";
+import { Reviews } from "./Reviews";
 
-export default function Restaurant({ restaurant, isActive }) {
-  if (!isActive) return <></>;
-
+const Restaurant = ({ restaurant }) => {
   return (
     <div className="restaurant" key={restaurant.id}>
       <h2>{restaurant.name}</h2>
@@ -15,4 +13,6 @@ export default function Restaurant({ restaurant, isActive }) {
       <Reviews reviews={restaurant.reviews} />
     </div>
   );
-}
+};
+
+export { Restaurant };

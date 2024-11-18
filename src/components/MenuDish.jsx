@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-const limitAmount = (amount, min = 0, max = 5) =>
-  amount < min ? min : amount > max ? max : amount;
+const limitAmount = (amount, min = 0, max = 5) => {
+  if (amount < min) return min;
+  if (amount > max) return max;
+  return amount;
+};
 
-export default function MenuDish({ dish }) {
+const MenuDish = ({ dish }) => {
   const [amount, setAmount] = useState(0);
 
   return (
@@ -18,4 +21,6 @@ export default function MenuDish({ dish }) {
       </td>
     </tr>
   );
-}
+};
+
+export { MenuDish };

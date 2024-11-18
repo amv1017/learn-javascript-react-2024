@@ -1,6 +1,6 @@
-import MenuDish from "./MenuDish";
+import { MenuDish } from "./MenuDish";
 
-export default function Menu({ menu }) {
+const Menu = ({ menu }) => {
   return menu ? (
     <table>
       <tr>
@@ -17,4 +17,6 @@ export default function Menu({ menu }) {
   ) : (
     <span>menu not found</span>
   );
-}
+};
+
+export { Menu };

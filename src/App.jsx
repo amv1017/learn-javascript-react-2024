@@ -1,22 +1,22 @@
 import { useState } from "react";
-import Restaurant from "./components/Restaurant";
+import { Restaurant } from "./components/Restaurant";
 import { restaurants as restaurants_mock } from "./mocks";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Layout } from "./components/Layout";
 
 const App = ({ restaurants = restaurants_mock }) => {
-  const [active, setActive] = useState(
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(
     restaurants[0]?.id ? restaurants[0]?.id : "",
   );
   return (
-    <>
-      <Header />
+    <Layout>
       <nav>
         <ul className="nav">
           {restaurants.map((restaurant) => (
             <li
-              onClick={() => setActive(restaurant.id)}
-              className={`nav ${active === restaurant.id ? "active" : ""}`}
+              onClick={() => setCurrentRestaurantId(restaurant.id)}
+              className={`nav ${
+                currentRestaurantId === restaurant.id ? "active" : ""
+              }`}
               key={restaurant.id}
             >
               <span>{restaurant.name}</span>
@@ -24,15 +24,13 @@ const App = ({ restaurants = restaurants_mock }) => {
           ))}
         </ul>
       </nav>
-      {restaurants.map((restaurant) => (
-        <Restaurant
-          restaurant={restaurant}
-          isActive={active === restaurant.id}
-          key={restaurant.id}
-        />
-      ))}
-      <Footer />
-    </>
+      {restaurants.map(
+        (restaurant) =>
+          currentRestaurantId === restaurant.id && (
+            <Restaurant restaurant={restaurant} key={restaurant.id} />
+          ),
+      )}
+    </Layout>
   );
 };
 

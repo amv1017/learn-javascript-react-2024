@@ -25,4 +25,4 @@ const Reviews = ({ reviews }) =>
     <span>no reviews found</span>
   );
 
-export default Reviews;
+export { Reviews };
