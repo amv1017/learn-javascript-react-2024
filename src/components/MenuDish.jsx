@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-const limitAmount = (amount, min = 0, max = 5) => {
-  if (amount < min) return min;
-  if (amount > max) return max;
-  return amount;
-};
+import { Counter } from "./Counter";
+import { limitAmount } from "../functions";
 
 const MenuDish = ({ dish }) => {
   const [amount, setAmount] = useState(0);
@@ -15,9 +11,11 @@ const MenuDish = ({ dish }) => {
       <td width={"40%"}> {dish.ingredients.join(", ")}</td>
       <td width={"10%"}>{dish.price}</td>
       <td className="amount">
-        <button onClick={() => setAmount(limitAmount(amount + 1))}>+</button>
-        {amount}
-        <button onClick={() => setAmount(limitAmount(amount - 1))}>-</button>
+        <Counter
+          value={amount}
+          increment={() => setAmount(limitAmount(amount + 1))}
+          decrement={() => setAmount(limitAmount(amount - 1))}
+        />
       </td>
     </tr>
   );

@@ -13,10 +13,10 @@ const Reviews = ({ reviews }) =>
     <ul>
       {reviews.map((e) => (
         <li className="review" key={e.id}>
-          <p style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <h4>{e.user}</h4>
             <Stars rating={e.rating} />
-          </p>
+          </div>
           <i>{e.text}</i>
         </li>
       ))}

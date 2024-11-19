@@ -1,16 +1,18 @@
 import { Menu } from "./Menu";
 import { Reviews } from "./Reviews";
+import { ReviewForm } from "./ReviewForm";
 
-const Restaurant = ({ restaurant }) => {
+const Restaurant = ({ name, menu, reviews }) => {
   return (
-    <div className="restaurant" key={restaurant.id}>
-      <h2>{restaurant.name}</h2>
+    <div className="restaurant">
+      <h2>{name}</h2>
 
-      <Menu menu={restaurant.menu} />
+      <Menu menu={menu} />
 
       <hr style={{ margin: "20px" }} />
 
-      <Reviews reviews={restaurant.reviews} />
+      <Reviews reviews={reviews} />
+      <ReviewForm />
     </div>
   );
 };
