@@ -29,6 +29,10 @@ const reducer = (state, action) => {
       return { ...state, rating: action.payload };
     }
 
+    case ACTION_TYPES.CLEAR: {
+      return initialState;
+    }
+
     default: {
       return state;
     }
@@ -91,6 +95,15 @@ const ReviewForm = () => {
         />
 
         <button type="submit">Отправить</button>
+        <button
+          className="btn-clear"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch({ type: ACTION_TYPES.CLEAR });
+          }}
+        >
+          ✖
+        </button>
       </div>
     </form>
   );
