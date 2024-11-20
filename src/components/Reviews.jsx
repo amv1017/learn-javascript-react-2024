@@ -11,13 +11,13 @@ const Stars = ({
 const Reviews = ({ reviews }) =>
   reviews ? (
     <ul>
-      {reviews.map((e) => (
-        <li className="review" key={e.id}>
+      {reviews.map((review) => (
+        <li className="review" key={review.id}>
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <h4>{e.user}</h4>
-            <Stars rating={e.rating} />
+            <h4>{review.user}</h4>
+            <Stars rating={review.rating} />
           </div>
-          <i>{e.text}</i>
+          <i>{review.text}</i>
         </li>
       ))}
     </ul>

@@ -10,7 +10,8 @@ const App = ({ restaurants = restaurants_mock }) => {
   );
 
   const activeRestaurant = useMemo(
-    () => restaurants.find((e) => e.id === currentRestaurantId),
+    () =>
+      restaurants.find((restaurant) => restaurant.id === currentRestaurantId),
     [currentRestaurantId, restaurants],
   );
 
