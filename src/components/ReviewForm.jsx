@@ -44,7 +44,7 @@ const ReviewForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
+    // console.log(state);
   };
 
   return (
@@ -96,9 +96,9 @@ const ReviewForm = () => {
 
         <button type="submit">Отправить</button>
         <button
+          type="button"
           className="btn-clear"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             dispatch({ type: ACTION_TYPES.CLEAR });
           }}
         >

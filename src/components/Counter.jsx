@@ -1,21 +1,12 @@
 const Counter = ({ value, increment, decrement }) => {
+  // в атрибутах кнопок type="button", чтобы при выносе компонента <Counter /> на форму не вызывать ее отправку
   return (
     <div className="counter">
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          increment();
-        }}
-      >
+      <button type="button" onClick={increment}>
         +
       </button>
       <span>{value}</span>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          decrement();
-        }}
-      >
+      <button type="button" onClick={decrement}>
         -
       </button>
     </div>
