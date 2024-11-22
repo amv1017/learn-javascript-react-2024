@@ -1,12 +1,4 @@
-const Stars = ({
-  rating,
-  paint = (l) => [...Array(l)].map(() => "★").join(""),
-}) => (
-  <div>
-    <span style={{ color: "orange" }}>{paint(+rating)}</span>
-    <span style={{ color: "grey" }}>{paint(5 - +rating)}</span>
-  </div>
-);
+import { ReviewStars } from "./ReviewStars";
 
 const Reviews = ({ reviews }) =>
   reviews ? (
@@ -15,7 +7,7 @@ const Reviews = ({ reviews }) =>
         <li className="review" key={review.id}>
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <h4>{review.user}</h4>
-            <Stars rating={review.rating} />
+            <ReviewStars rating={review.rating} />
           </div>
           <i>{review.text}</i>
         </li>

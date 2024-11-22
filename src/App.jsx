@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Restaurant } from "./components/Restaurant";
-import { restaurants as restaurants_mock } from "./mocks";
+import { restaurants as restaurants_mock } from "@/mocks";
 import { Layout } from "./components/Layout";
 import { ProgressBar } from "./components/ProgressBar";
 

@@ -1,0 +1,22 @@
+.counter {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: orange;
+  width: 30px;
+  font-size: 16px;
+}
+
+.value {
+  margin: 0 15px;
+}
+
+.counter span {
+  display: flex;
+  align-items: center;
+}
