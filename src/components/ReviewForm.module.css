@@ -40,3 +40,8 @@
   color: #fff;
   padding: 5px 10px;
 }
+
+.feedback .buttons {
+  display: flex;
+  justify-content: space-between;
+}

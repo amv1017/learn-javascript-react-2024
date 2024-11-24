@@ -10,7 +10,7 @@ const Restaurant = ({ name, menu, reviews }) => {
 
       <Menu menu={menu} />
 
-      <hr style={{ margin: "20px" }} />
+      <hr />
 
       <Reviews reviews={reviews} />
       <ReviewForm />

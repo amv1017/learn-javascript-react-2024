@@ -73,12 +73,7 @@ const ReviewForm = () => {
         rows="5"
       />
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={styles.buttons}>
         <Counter
           value={state.rating}
           increment={() =>
