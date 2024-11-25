@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { Counter } from "./Counter";
-import { limitAmount } from "../functions";
+import { limitAmount } from "@/functions";
+import styles from "./ReviewForm.module.css";
 
 const initialState = {
   name: "",
@@ -48,7 +49,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <form className="feedback" onSubmit={handleSubmit}>
+    <form className={styles.feedback} onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Имя</label>
         <input
@@ -72,12 +73,7 @@ const ReviewForm = () => {
         rows="5"
       />
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={styles.buttons}>
         <Counter
           value={state.rating}
           increment={() =>
@@ -96,8 +92,7 @@ const ReviewForm = () => {
 
         <button type="submit">Отправить</button>
         <button
-          type="button"
-          className="btn-clear"
+          type="reset"
           onClick={() => {
             dispatch({ type: ACTION_TYPES.CLEAR });
           }}

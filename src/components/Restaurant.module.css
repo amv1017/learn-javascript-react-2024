@@ -1,0 +1,11 @@
+.restaurant {
+  border: 1px #333 solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background: steelblue;
+}
+
+hr {
+  margin: 20px;
+}

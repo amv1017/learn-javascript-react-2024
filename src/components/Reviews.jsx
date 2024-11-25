@@ -1,22 +1,15 @@
-const Stars = ({
-  rating,
-  paint = (l) => [...Array(l)].map(() => "★").join(""),
-}) => (
-  <div>
-    <span style={{ color: "orange" }}>{paint(+rating)}</span>
-    <span style={{ color: "grey" }}>{paint(5 - +rating)}</span>
-  </div>
-);
+import { ReviewStars } from "./ReviewStars";
+import styles from "./Reviews.module.css";
 
 const Reviews = ({ reviews }) =>
   reviews ? (
     <ul>
       {reviews.map((review) => (
-        <li className="review" key={review.id}>
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <li className={styles.review} key={review.id}>
+          <main>
             <h4>{review.user}</h4>
-            <Stars rating={review.rating} />
-          </div>
+            <ReviewStars rating={review.rating} />
+          </main>
           <i>{review.text}</i>
         </li>
       ))}
