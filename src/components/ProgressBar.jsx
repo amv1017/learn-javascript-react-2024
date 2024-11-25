@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { scrollPercentage } from "@/functions";
 import styles from "./ProgressBar.module.css";
 
 const ProgressBar = () => {
-  const ref = useRef();
+  const [progressBarWidth, setProgressBarWidth] = useState(0);
 
   useEffect(() => {
     function displayProgress() {
-      ref.current.style.width = `${scrollPercentage()}%`;
+      setProgressBarWidth(scrollPercentage());
     }
 
     window.addEventListener("scroll", displayProgress);
@@ -16,7 +16,14 @@ const ProgressBar = () => {
     };
   }, []);
 
-  return <div className={styles.progressbar} ref={ref}></div>;
+  return (
+    <div
+      className={styles.progressbar}
+      style={{
+        width: `${progressBarWidth}%`,
+      }}
+    ></div>
+  );
 };
 
 export { ProgressBar };
