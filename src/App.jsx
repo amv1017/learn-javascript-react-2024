@@ -26,12 +26,9 @@ const App = ({ restaurants = restaurants_mock }) => {
             {restaurants.map((restaurant) => (
               <li
                 onClick={() => setCurrentRestaurantId(restaurant.id)}
-                className={classNames(
-                  styles.item,
-                  currentRestaurantId === restaurant.id
-                    ? styles.activeItem
-                    : "",
-                )}
+                className={classNames(styles.item, {
+                  [styles.activeItem]: currentRestaurantId === restaurant.id,
+                })}
                 key={restaurant.id}
               >
                 <span>{restaurant.name}</span>

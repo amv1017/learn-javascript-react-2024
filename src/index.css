@@ -37,7 +37,6 @@ header {
   background: #65a;
 }
 
-
 footer {
   background: #65a;
   color: #fff;
@@ -45,9 +44,4 @@ footer {
   position: absolute;
   bottom: -50px;
   width: 100%;
-}
-
-.amountbutton {
-  background: navy;
-  color: #fff;
 }

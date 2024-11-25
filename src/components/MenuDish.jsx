@@ -14,7 +14,7 @@ const MenuDish = ({ dish }) => {
       <td className="amount">
         <Counter
           value={amount}
-          btnClassName={"amountbutton"}
+          btnClassName={styles.amountbutton}
           increment={() => setAmount(limitAmount(amount + 1))}
           decrement={() => setAmount(limitAmount(amount - 1))}
         />

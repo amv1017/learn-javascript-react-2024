@@ -9,3 +9,8 @@
 .price {
   width: 10%;
 }
+
+.amountbutton {
+  background: navy;
+  color: #fff;
+}
