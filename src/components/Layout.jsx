@@ -1,13 +1,17 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { AuthContextProvider } from "../context/Auth";
+import { ThemeContextProvider } from "../context/Theme";
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <Header />
+        {children}
+        <Footer />
+      </ThemeContextProvider>
+    </AuthContextProvider>
   );
 };
 

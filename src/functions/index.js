@@ -8,3 +8,4 @@ export const scrollPercentage = () =>
   (100 * window.scrollY) /
   (document.documentElement.scrollHeight -
     document.documentElement.clientHeight);
+

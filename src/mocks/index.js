@@ -1,3 +1,6 @@
+export const USER_NAME = "William";
+export const USER_KEY = "8f4d57f9-2652-48c0-bc6e-70f6bd323342";
+
 export const restaurants = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",

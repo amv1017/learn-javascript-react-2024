@@ -1,11 +1,20 @@
-import { ReviewStars } from "./ReviewStars";
+import classNames from "classnames";
 import styles from "./Reviews.module.css";
+import { ReviewStars } from "./ReviewStars";
+import { useTheme } from "../context/Theme";
 
-const Reviews = ({ reviews }) =>
-  reviews ? (
+const Reviews = ({ reviews }) => {
+  const { theme } = useTheme();
+
+  return reviews ? (
     <ul>
       {reviews.map((review) => (
-        <li className={styles.review} key={review.id}>
+        <li
+          className={classNames(styles.review, {
+            [theme == "dark" ? styles.dark : styles.light]: true,
+          })}
+          key={review.id}
+        >
           <main>
             <h4>{review.user}</h4>
             <ReviewStars rating={review.rating} />
@@ -17,5 +26,6 @@ const Reviews = ({ reviews }) =>
   ) : (
     <span>no reviews found</span>
   );
+};
 
 export { Reviews };

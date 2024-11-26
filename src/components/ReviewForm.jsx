@@ -1,7 +1,9 @@
-import { useReducer } from "react";
+import { useReducer, useMemo } from "react";
 import { Counter } from "./Counter";
 import { limitAmount } from "@/functions";
 import styles from "./ReviewForm.module.css";
+import { useTheme } from "../context/Theme";
+import classNames from "classnames";
 
 const initialState = {
   name: "",
@@ -43,15 +45,25 @@ const reducer = (state, action) => {
 const ReviewForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const { theme } = useTheme();
+
+  const common = useMemo(
+    () => ({ [theme == "dark" ? styles.dark : styles.light]: true }),
+    [theme],
+  );
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(state);
   };
 
   return (
-    <form className={styles.feedback} onSubmit={handleSubmit}>
+    <form
+      className={classNames(styles.feedback, common)}
+      onSubmit={handleSubmit}
+    >
       <div>
-        <label htmlFor="name">Имя</label>
+        <label htmlFor="name">Name</label>
         <input
           name="name"
           value={state.name}
@@ -59,7 +71,7 @@ const ReviewForm = () => {
             dispatch({ type: ACTION_TYPES.SET_NAME, payload: e.target.value })
           }
           type="text"
-          placeholder="Ваше имя"
+          placeholder="Your name"
         />
       </div>
 
@@ -69,7 +81,7 @@ const ReviewForm = () => {
           dispatch({ type: ACTION_TYPES.SET_TEXT, payload: e.target.value })
         }
         type="text"
-        placeholder="Ваш отзыв..."
+        placeholder="Your message..."
         rows="5"
       />
 
@@ -90,7 +102,7 @@ const ReviewForm = () => {
           }
         />
 
-        <button type="submit">Отправить</button>
+        <button type="submit">Send</button>
         <button
           type="reset"
           onClick={() => {
