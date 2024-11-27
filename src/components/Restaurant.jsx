@@ -3,8 +3,8 @@ import styles from "./Restaurant.module.css";
 import { Menu } from "./Menu";
 import { ReviewForm } from "./ReviewForm";
 import { Reviews } from "./Reviews";
-import { useAuth } from "../context/Auth";
-import { useTheme } from "../context/Theme";
+import { useAuth } from "../hooks";
+import { useTheme } from "../hooks";
 
 const Restaurant = ({ name, menu, reviews }) => {
   const { user } = useAuth();

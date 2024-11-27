@@ -3,7 +3,7 @@ import { Counter } from "./Counter";
 import { limitAmount } from "@/functions";
 import classNames from "classnames";
 import styles from "./MenuDish.module.css";
-import { useTheme } from "../context/Theme";
+import { useTheme } from "../hooks";
 
 const MenuDish = ({ dish }) => {
   const [amount, setAmount] = useState(0);

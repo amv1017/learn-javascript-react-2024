@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTheme } from "../context/Theme";
+import { useTheme } from "../hooks";
 import styles from "./Header.module.css";
 import { UserButton } from "./UserButton";
 
@@ -21,6 +21,7 @@ const Header = () => {
             onChange={() => {
               toggleTheme();
             }}
+            checked={theme == "dark"}
           />
           <span className={styles.slider}></span>
         </label>

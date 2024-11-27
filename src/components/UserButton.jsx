@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAuth } from "../context/Auth";
+import { useAuth } from "../hooks";
 import loginIcon from "../static/login.svg";
 import userIcon from "../static/user.svg";
 import { USER_KEY, USER_NAME } from "../mocks";

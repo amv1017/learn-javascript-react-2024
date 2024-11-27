@@ -2,7 +2,7 @@ import { useReducer, useMemo } from "react";
 import { Counter } from "./Counter";
 import { limitAmount } from "@/functions";
 import styles from "./ReviewForm.module.css";
-import { useTheme } from "../context/Theme";
+import { useTheme } from "../hooks";
 import classNames from "classnames";
 
 const initialState = {

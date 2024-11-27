@@ -1,6 +1,6 @@
 import { MenuDish } from "./MenuDish";
 import styles from "./Menu.module.css";
-import { useTheme } from "../context/Theme";
+import { useTheme } from "../hooks";
 import { useMemo } from "react";
 import classNames from "classnames";
 

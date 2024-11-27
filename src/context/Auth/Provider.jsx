@@ -1,7 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { USER_KEY } from "../mocks";
-
-export const AuthContext = createContext();
+import { useState, useEffect } from "react";
+import { USER_KEY } from "../../mocks";
+import { AuthContext } from ".";
 
 export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
@@ -18,12 +17,4 @@ export const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within a AuthContextProvider");
-  }
-  return context;
 };
