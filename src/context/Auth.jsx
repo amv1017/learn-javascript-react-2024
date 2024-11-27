@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeContextProvider");
+    throw new Error("useAuth must be used within a AuthContextProvider");
   }
   return context;
 };
