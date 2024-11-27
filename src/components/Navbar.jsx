@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import { useTheme } from "@/hooks";
 import styles from "./Navbar.module.css";
-import { useTheme } from "../hooks";
 
 export const Navbar = ({
   restaurants,

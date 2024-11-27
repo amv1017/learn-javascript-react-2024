@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ThemeContext } from ".";
-import { THEME_KEY } from "../../mocks";
+import { THEME_KEY } from "@/mocks";
 
 export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");

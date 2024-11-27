@@ -5,3 +5,11 @@ th.dark {
 th.light {
   border: 1px #333 dashed;
 }
+
+.minTable {
+  width: 70%;
+}
+
+.maxTable {
+  width: 100%;
+}

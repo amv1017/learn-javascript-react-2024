@@ -1,9 +1,9 @@
-import { useReducer, useMemo } from "react";
-import { Counter } from "./Counter";
-import { limitAmount } from "@/functions";
-import styles from "./ReviewForm.module.css";
-import { useTheme } from "../hooks";
+import { useReducer } from "react";
 import classNames from "classnames";
+import { limitAmount } from "@/functions";
+import { useTheme } from "@/hooks";
+import { Counter } from "./Counter";
+import styles from "./ReviewForm.module.css";
 
 const initialState = {
   name: "",
@@ -47,10 +47,7 @@ const ReviewForm = () => {
 
   const { theme } = useTheme();
 
-  const common = useMemo(
-    () => ({ [theme == "dark" ? styles.dark : styles.light]: true }),
-    [theme],
-  );
+  const common = theme == "dark" ? styles.dark : styles.light;
 
   const handleSubmit = (e) => {
     e.preventDefault();

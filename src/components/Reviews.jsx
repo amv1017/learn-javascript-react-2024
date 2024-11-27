@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import styles from "./Reviews.module.css";
+import { useTheme } from "@/hooks";
 import { ReviewStars } from "./ReviewStars";
-import { useTheme } from "../hooks";
+import styles from "./Reviews.module.css";
 
 const Reviews = ({ reviews }) => {
   const { theme } = useTheme();

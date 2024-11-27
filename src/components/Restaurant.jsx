@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import styles from "./Restaurant.module.css";
+import { useAuth } from "@/hooks";
+import { useTheme } from "@/hooks";
 import { Menu } from "./Menu";
 import { ReviewForm } from "./ReviewForm";
 import { Reviews } from "./Reviews";
-import { useAuth } from "../hooks";
-import { useTheme } from "../hooks";
+import styles from "./Restaurant.module.css";
 
 const Restaurant = ({ name, menu, reviews }) => {
   const { user } = useAuth();
