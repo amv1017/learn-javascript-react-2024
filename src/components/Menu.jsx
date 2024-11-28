@@ -16,10 +16,10 @@ const Menu = ({ menu }) => {
       })}
     >
       <tr>
-        <th className={classNames(common)}>Name</th>
-        <th className={classNames(common)}>Ingredients</th>
-        <th className={classNames(common)}>Price</th>
-        {user.name && <th className={classNames(common)}>Amount</th>}
+        <th className={common}>Name</th>
+        <th className={common}>Ingredients</th>
+        <th className={common}>Price</th>
+        {user.name && <th className={common}>Amount</th>}
       </tr>
 
       {menu.map((dish) => (

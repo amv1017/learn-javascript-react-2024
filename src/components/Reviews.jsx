@@ -10,9 +10,10 @@ const Reviews = ({ reviews }) => {
     <ul>
       {reviews.map((review) => (
         <li
-          className={classNames(styles.review, {
-            [theme == "dark" ? styles.dark : styles.light]: true,
-          })}
+          className={classNames(
+            styles.review,
+            theme == "dark" ? styles.dark : styles.light,
+          )}
           key={review.id}
         >
           <main>

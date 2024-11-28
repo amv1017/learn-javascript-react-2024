@@ -11,9 +11,10 @@ export const Navbar = ({
 
   return (
     <nav
-      className={classNames(styles.nav, {
-        [theme == "dark" ? styles.dark : styles.light]: true,
-      })}
+      className={classNames(
+        styles.nav,
+        theme == "dark" ? styles.dark : styles.light,
+      )}
     >
       <ul>
         {restaurants.map((restaurant) => (

@@ -9,9 +9,10 @@ const Header = () => {
 
   return (
     <header
-      className={classNames(styles.header, {
-        [theme == "dark" ? styles.dark : styles.light]: true,
-      })}
+      className={classNames(
+        styles.header,
+        theme == "dark" ? styles.dark : styles.light,
+      )}
     >
       <h1>Restaurants</h1>
       <div className={styles.controls}>

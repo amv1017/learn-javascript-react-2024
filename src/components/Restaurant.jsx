@@ -12,9 +12,10 @@ const Restaurant = ({ name, menu, reviews }) => {
 
   return (
     <div
-      className={classNames(styles.restaurant, {
-        [theme == "dark" ? styles.dark : styles.light]: true,
-      })}
+      className={classNames(
+        styles.restaurant,
+        theme == "dark" ? styles.dark : styles.light,
+      )}
     >
       <h2>{name}</h2>
 
