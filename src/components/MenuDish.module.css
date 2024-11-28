@@ -1,16 +1,29 @@
 .name {
-  width: 30%;
+  width: 25%;
 }
 
 .ingredients {
-  width: 40%;
+  width: 35%;
 }
 
 .price {
   width: 10%;
 }
 
-.amountbutton {
+.amountbutton.dark {
+  background: #acf;
+  color: #333;
+}
+
+.amountbutton.light {
   background: navy;
   color: #fff;
+}
+
+td.dark {
+  border: 1px #fff dashed;
+}
+
+td.light {
+  border: 1px #333 dashed;
 }

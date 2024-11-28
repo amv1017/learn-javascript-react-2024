@@ -1,0 +1,22 @@
+.header h1 {
+  text-align: center;
+}
+
+.controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dark {
+  background: #014;
+  color: #fff;
+}
+
+.light {
+  background: #bdf;
+  color: #333;
+}

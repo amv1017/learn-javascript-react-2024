@@ -1,0 +1,14 @@
+.loginBtn {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.loginBtn img {
+  width: 24px;
+}
+
+.loginBtn span {
+  margin: 0 8px;
+}

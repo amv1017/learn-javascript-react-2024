@@ -1,11 +1,22 @@
+import classNames from "classnames";
+import { useAuth } from "@/hooks";
+import { useTheme } from "@/hooks";
 import { Menu } from "./Menu";
-import { Reviews } from "./Reviews";
 import { ReviewForm } from "./ReviewForm";
+import { Reviews } from "./Reviews";
 import styles from "./Restaurant.module.css";
 
 const Restaurant = ({ name, menu, reviews }) => {
+  const { user } = useAuth();
+  const { theme } = useTheme();
+
   return (
-    <div className={styles.restaurant}>
+    <div
+      className={classNames(
+        styles.restaurant,
+        theme == "dark" ? styles.dark : styles.light,
+      )}
+    >
       <h2>{name}</h2>
 
       <Menu menu={menu} />
@@ -13,7 +24,7 @@ const Restaurant = ({ name, menu, reviews }) => {
       <hr />
 
       <Reviews reviews={reviews} />
-      <ReviewForm />
+      {user.name && <ReviewForm />}
     </div>
   );
 };

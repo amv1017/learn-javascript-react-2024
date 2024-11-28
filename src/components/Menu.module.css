@@ -1,0 +1,15 @@
+th.dark {
+  border: 1px #fff dashed;
+}
+
+th.light {
+  border: 1px #333 dashed;
+}
+
+.minTable {
+  width: 70%;
+}
+
+.maxTable {
+  width: 100%;
+}

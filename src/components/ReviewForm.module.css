@@ -45,3 +45,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+form.dark {
+  background: #468;
+}
+
+form.light {
+  background: #8ac;
+}

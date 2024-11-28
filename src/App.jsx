@@ -1,10 +1,9 @@
-import { useState, useMemo } from "react";
-import classNames from "classnames";
+import { Layout } from "./components/Layout";
+import { Navbar } from "./components/Navbar";
+import { ProgressBar } from "./components/ProgressBar";
 import { Restaurant } from "./components/Restaurant";
 import { restaurants as restaurants_mock } from "@/mocks";
-import { Layout } from "./components/Layout";
-import { ProgressBar } from "./components/ProgressBar";
-import styles from "./App.module.css";
+import { useState, useMemo } from "react";
 
 const App = ({ restaurants = restaurants_mock }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState(
@@ -21,21 +20,11 @@ const App = ({ restaurants = restaurants_mock }) => {
     <>
       <ProgressBar />
       <Layout>
-        <nav className={styles.nav}>
-          <ul>
-            {restaurants.map((restaurant) => (
-              <li
-                onClick={() => setCurrentRestaurantId(restaurant.id)}
-                className={classNames(styles.item, {
-                  [styles.activeItem]: currentRestaurantId === restaurant.id,
-                })}
-                key={restaurant.id}
-              >
-                <span>{restaurant.name}</span>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navbar
+          restaurants={restaurants}
+          currentRestaurantId={currentRestaurantId}
+          setCurrentRestaurantId={setCurrentRestaurantId}
+        />
         {activeRestaurant &&
           [...Array(10)].map((_, k) => (
             <Restaurant {...activeRestaurant} key={k} />

@@ -1,3 +1,7 @@
+export const USER_NAME = "William";
+export const USER_KEY = "user-8f4d57f9-2652-48c0-bc6e-70f6bd323342";
+export const THEME_KEY = "theme-c537671b-a4a6-4fc4-939e-df5c0cee66d0";
+
 export const restaurants = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
