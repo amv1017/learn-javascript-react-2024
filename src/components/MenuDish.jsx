@@ -4,12 +4,16 @@ import { limitAmount } from "@/functions";
 import { useAuth, useTheme } from "@/hooks";
 import { Counter } from "./Counter";
 import styles from "./MenuDish.module.css";
+import { useSelector } from "react-redux";
+import { selectDishById } from "../store/features/dishes";
 
-const MenuDish = ({ dish }) => {
+const MenuDish = ({ id }) => {
   const [amount, setAmount] = useState(0);
 
   const { user } = useAuth();
   const { theme } = useTheme();
+
+  const dish = useSelector((state) => selectDishById(state, id));
 
   const common = theme == "dark" ? styles.dark : styles.light;
 

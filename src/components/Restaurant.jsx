@@ -5,10 +5,16 @@ import { Menu } from "./Menu";
 import { ReviewForm } from "./ReviewForm";
 import { Reviews } from "./Reviews";
 import styles from "./Restaurant.module.css";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../store/features/restaurants";
 
-const Restaurant = ({ name, menu, reviews }) => {
+const Restaurant = ({ id }) => {
   const { user } = useAuth();
   const { theme } = useTheme();
+
+  const { name, menu, reviews } = useSelector((state) =>
+    selectRestaurantById(state, id),
+  );
 
   return (
     <div

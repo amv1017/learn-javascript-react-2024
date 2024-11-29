@@ -12,14 +12,6 @@
   width: 70%;
 }
 
-.item {
-  border: 1px #333 solid;
-  border-radius: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
-  min-width: fit-content;
-}
-
 .dark {
   background: #014;
   color: #fff;
@@ -28,22 +20,4 @@
 .light {
   background: #bdf;
   color: #333;
-}
-
-.item.dark {
-  background: navy;
-  color: #fff;
-}
-
-.item.light {
-  background: navy;
-  color: #fff;
-}
-
-.item.light.active {
-  filter: hue-rotate(60deg);
-}
-
-.item.dark.active {
-  filter: hue-rotate(-60deg);
 }

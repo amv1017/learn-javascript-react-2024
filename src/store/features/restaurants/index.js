@@ -4,9 +4,9 @@ import { normalizedRestaurants } from "@/mocks";
 const initialState = {
   ids: normalizedRestaurants.map(({ id }) => id),
   values: normalizedRestaurants.reduce(
-    (result, current) => ({
+    (result, current, index) => ({
       ...result,
-      [current.id]: current,
+      [current.id]: { ...current, active: !index },
     }),
     {},
   ),

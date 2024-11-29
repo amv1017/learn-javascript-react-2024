@@ -1,13 +1,19 @@
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
 import styles from "./Navbar.module.css";
+import { useSelector } from "react-redux";
+import { selectRestaurantsIds } from "../store/features/restaurants";
+import { NavbarItem } from "./NavbarItem";
+import { useEffect } from "react";
 
-export const Navbar = ({
-  restaurants,
-  currentRestaurantId,
-  setCurrentRestaurantId,
-}) => {
+export const Navbar = ({ currentRestaurantId, setCurrentRestaurantId }) => {
   const { theme } = useTheme();
+
+  const restaurantsIds = useSelector(selectRestaurantsIds);
+
+  useEffect(() => {
+    setCurrentRestaurantId(restaurantsIds[0]);
+  }, [restaurantsIds, setCurrentRestaurantId]);
 
   return (
     <nav
@@ -17,17 +23,13 @@ export const Navbar = ({
       )}
     >
       <ul>
-        {restaurants.map((restaurant) => (
-          <li
-            onClick={() => setCurrentRestaurantId(restaurant.id)}
-            className={classNames(styles.item, {
-              [styles.active]: currentRestaurantId === restaurant.id,
-              [theme == "dark" ? styles.dark : styles.light]: true,
-            })}
-            key={restaurant.id}
-          >
-            <span>{restaurant.name}</span>
-          </li>
+        {restaurantsIds.map((id) => (
+          <NavbarItem
+            id={id}
+            key={id}
+            onClick={() => setCurrentRestaurantId(id)}
+            isActive={currentRestaurantId === id}
+          />
         ))}
       </ul>
     </nav>
