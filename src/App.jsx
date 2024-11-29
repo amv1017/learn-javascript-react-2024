@@ -1,9 +1,11 @@
+import { useState, useMemo } from "react";
+import { Provider } from "react-redux";
 import { Layout } from "./components/Layout";
 import { Navbar } from "./components/Navbar";
 import { ProgressBar } from "./components/ProgressBar";
 import { Restaurant } from "./components/Restaurant";
+import { store } from "./store";
 import { restaurants as restaurants_mock } from "@/mocks";
-import { useState, useMemo } from "react";
 
 const App = ({ restaurants = restaurants_mock }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState(
@@ -17,7 +19,7 @@ const App = ({ restaurants = restaurants_mock }) => {
   );
 
   return (
-    <>
+    <Provider store={store}>
       <ProgressBar />
       <Layout>
         <Navbar
@@ -30,7 +32,7 @@ const App = ({ restaurants = restaurants_mock }) => {
             <Restaurant {...activeRestaurant} key={k} />
           ))}
       </Layout>
-    </>
+    </Provider>
   );
 };
 
