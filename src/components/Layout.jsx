@@ -1,17 +1,15 @@
-import { AuthContextProvider } from "@/context/Auth";
-import { ThemeContextProvider } from "@/context/Theme";
+import { ProgressBar } from "@/components/ProgressBar";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 const Layout = ({ children }) => {
   return (
-    <AuthContextProvider>
-      <ThemeContextProvider>
-        <Header />
-        {children}
-        <Footer />
-      </ThemeContextProvider>
-    </AuthContextProvider>
+    <>
+      <ProgressBar />
+      <Header />
+      {children}
+      <Footer />
+    </>
   );
 };
 

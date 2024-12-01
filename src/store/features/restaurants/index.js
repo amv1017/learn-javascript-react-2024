@@ -3,13 +3,10 @@ import { normalizedRestaurants } from "@/mocks";
 
 const initialState = {
   ids: normalizedRestaurants.map(({ id }) => id),
-  values: normalizedRestaurants.reduce(
-    (result, current, index) => ({
-      ...result,
-      [current.id]: { ...current, active: !index },
-    }),
-    {},
-  ),
+  values: normalizedRestaurants.reduce((result, current) => {
+    result[current.id] = current;
+    return result;
+  }, {}),
 };
 
 export const restaurantsSlice = createSlice({

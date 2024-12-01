@@ -3,13 +3,10 @@ import { normalizedReviews } from "@/mocks";
 
 const initialState = {
   ids: normalizedReviews.map(({ id }) => id),
-  values: normalizedReviews.reduce(
-    (result, current) => ({
-      ...result,
-      [current.id]: current,
-    }),
-    {},
-  ),
+  values: normalizedReviews.reduce((result, current) => {
+    result[current.id] = current;
+    return result;
+  }, {}),
 };
 
 export const reviewsSlice = createSlice({

@@ -3,13 +3,10 @@ import { normalizedDishes } from "@/mocks";
 
 const initialState = {
   ids: normalizedDishes.map(({ id }) => id),
-  values: normalizedDishes.reduce(
-    (result, current) => ({
-      ...result,
-      [current.id]: current,
-    }),
-    {},
-  ),
+  values: normalizedDishes.reduce((result, current) => {
+    result[current.id] = current;
+    return result;
+  }, {}),
 };
 
 export const dishesSlice = createSlice({
