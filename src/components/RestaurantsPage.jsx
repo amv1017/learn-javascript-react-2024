@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "@/components/Navbar";
-import { Restaurant } from "@/components/Restaurant";
+import { Navbar, Restaurant } from "@/components";
 
 const RestaurantsPage = () => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState("");

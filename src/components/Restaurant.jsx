@@ -1,12 +1,9 @@
-import classNames from "classnames";
-import { useAuth } from "@/hooks";
-import { useTheme } from "@/hooks";
-import { Menu } from "./Menu";
-import { ReviewForm } from "./ReviewForm";
-import { Reviews } from "./Reviews";
-import styles from "./Restaurant.module.css";
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../store/features/restaurants";
+import classNames from "classnames";
+import { ReviewForm, Reviews, Menu } from "@/components";
+import { useAuth, useTheme } from "@/hooks";
+import { selectRestaurantById } from "@/store/features/restaurants";
+import styles from "./Restaurant.module.css";
 
 const Restaurant = ({ id }) => {
   const { user } = useAuth();

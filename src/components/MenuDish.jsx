@@ -1,11 +1,11 @@
 import { useState } from "react";
-import classNames from "classnames";
-import { limitAmount } from "@/functions";
-import { useAuth, useTheme } from "@/hooks";
-import { Counter } from "./Counter";
-import styles from "./MenuDish.module.css";
 import { useSelector } from "react-redux";
-import { selectDishById } from "../store/features/dishes";
+import classNames from "classnames";
+import { Counter } from "@/components";
+import { useAuth, useTheme } from "@/hooks";
+import { limitAmount } from "@/functions";
+import { selectDishById } from "@/store/features/dishes";
+import styles from "./MenuDish.module.css";
 
 const MenuDish = ({ id }) => {
   const [amount, setAmount] = useState(0);

@@ -1,8 +1,6 @@
 import { Provider } from "react-redux";
-import { AuthContextProvider } from "@/context/Auth";
-import { ThemeContextProvider } from "@/context/Theme";
-import { Layout } from "@/components/Layout";
-import { RestaurantsPage } from "@/components/RestaurantsPage";
+import { AuthContextProvider, ThemeContextProvider } from "@/context";
+import { Layout, RestaurantsPage } from "@/components";
 import { store } from "@/store";
 
 const App = () => {

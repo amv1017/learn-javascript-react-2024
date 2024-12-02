@@ -1,8 +1,8 @@
+import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
+import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./NavbarItem.module.css";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../store/features/restaurants";
 
 export const NavbarItem = ({ id, onClick, isActive }) => {
   const { theme } = useTheme();

@@ -1,6 +1,4 @@
-import { ProgressBar } from "@/components/ProgressBar";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { ProgressBar, Footer, Header } from "@/components";
 
 const Layout = ({ children }) => {
   return (

@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import { MenuDish } from "@/components";
 import { useAuth, useTheme } from "@/hooks";
-import { MenuDish } from "./MenuDish";
 import styles from "./Menu.module.css";
 
 const Menu = ({ menu }) => {

@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import { useTheme } from "@/hooks";
-import { ReviewStars } from "./ReviewStars";
-import styles from "./Review.module.css";
 import { useSelector } from "react-redux";
-import { selectReviewById } from "../store/features/reviews";
-import { selectUserById } from "../store/features/users";
+import classNames from "classnames";
+import { ReviewStars } from "@/components";
+import { useTheme } from "@/hooks";
+import { selectReviewById } from "@/store/features/reviews";
+import { selectUserById } from "@/store/features/users";
+import styles from "./Review.module.css";
 
 const Review = ({ id }) => {
   const { theme } = useTheme();

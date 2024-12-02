@@ -1,4 +1,4 @@
-import { Review } from "./Review";
+import { Review } from "@/components";
 
 const Reviews = ({ reviews }) => {
   return reviews ? (
