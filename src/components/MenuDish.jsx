@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { limitAmount } from "@/functions";
+import { Counter } from "@/components";
 import { useAuth, useTheme } from "@/hooks";
-import { Counter } from "./Counter";
+import { limitAmount } from "@/functions";
+import { selectDishById } from "@/store/features/dishes";
 import styles from "./MenuDish.module.css";
 
-const MenuDish = ({ dish }) => {
+const MenuDish = ({ id }) => {
   const [amount, setAmount] = useState(0);
 
   const { user } = useAuth();
   const { theme } = useTheme();
+
+  const dish = useSelector((state) => selectDishById(state, id));
 
   const common = theme == "dark" ? styles.dark : styles.light;
 

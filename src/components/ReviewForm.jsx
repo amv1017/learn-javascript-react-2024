@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 import classNames from "classnames";
-import { limitAmount } from "@/functions";
+import { Counter } from "@/components";
 import { useTheme } from "@/hooks";
-import { Counter } from "./Counter";
+import { limitAmount } from "@/functions";
 import styles from "./ReviewForm.module.css";
 
 const initialState = {

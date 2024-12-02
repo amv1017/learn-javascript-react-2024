@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import { MenuDish } from "@/components";
 import { useAuth, useTheme } from "@/hooks";
-import { MenuDish } from "./MenuDish";
 import styles from "./Menu.module.css";
 
 const Menu = ({ menu }) => {
@@ -22,8 +22,8 @@ const Menu = ({ menu }) => {
         {user.name && <th className={common}>Amount</th>}
       </tr>
 
-      {menu.map((dish) => (
-        <MenuDish dish={dish} key={dish.id} />
+      {menu.map((id) => (
+        <MenuDish id={id} key={id} />
       ))}
     </table>
   ) : (
