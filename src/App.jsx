@@ -1,14 +1,15 @@
 import { Provider } from "react-redux";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
-import { Layout, RestaurantsPage, HomePage } from "@/components";
+import { Layout, RestaurantsPage, HomePage, Menu, Reviews } from "@/components";
 import { store } from "@/store";
 
 const router = createBrowserRouter([
+  { path: "/", element: <></>, errorElement: <Navigate to="/restaurants" /> },
   {
-    path: "/",
+    path: "/restaurants",
     element: <HomePage />,
-    errorElement: <Navigate to="/" />,
+    errorElement: <Navigate to="/restaurants" />,
     children: [
       {
         path: "/restaurants/:id",
@@ -16,11 +17,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/restaurants/:id/menu",
-            element: <p>!!! Menu !!!</p>,
+            element: <Menu />,
           },
           {
             path: "/restaurants/:id/reviews",
-            element: <p>!!! Reviews !!!</p>,
+            element: <Reviews />,
           },
         ],
       },
