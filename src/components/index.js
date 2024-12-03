@@ -1,6 +1,7 @@
 export * from "./Counter";
 export * from "./Footer";
 export * from "./Header";
+export * from "./HomePage";
 export * from "./Layout";
 export * from "./Menu";
 export * from "./MenuDish";

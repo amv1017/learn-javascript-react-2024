@@ -1,11 +1,14 @@
-import { Navbar } from "@/components";
-import { Outlet } from "react-router";
+import { Restaurant } from "@/components";
+import { useParams } from "react-router";
 
 const RestaurantsPage = () => {
+  const { id } = useParams();
+
   return (
     <>
-      <Navbar />
-      <Outlet />
+      {[...Array(10)].map((_, k) => (
+        <Restaurant id={id} key={k} />
+      ))}
     </>
   );
 };

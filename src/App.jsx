@@ -1,19 +1,18 @@
 import { Provider } from "react-redux";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
-import { Layout, RestaurantsPage } from "@/components";
+import { Layout, RestaurantsPage, HomePage } from "@/components";
 import { store } from "@/store";
-import { RestaurantsDetails } from "./components/RestaurantsDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RestaurantsPage />,
+    element: <HomePage />,
     errorElement: <Navigate to="/" />,
     children: [
       {
         path: "/restaurants/:id",
-        element: <RestaurantsDetails />,
+        element: <RestaurantsPage />,
         children: [
           {
             path: "/restaurants/:id/menu",
