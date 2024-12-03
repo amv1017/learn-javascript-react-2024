@@ -6,14 +6,10 @@ import { useTheme } from "@/hooks";
 import { selectRestaurantsIds } from "@/store/features/restaurants";
 import styles from "./Navbar.module.css";
 
-export const Navbar = ({ currentRestaurantId, setCurrentRestaurantId }) => {
+export const Navbar = () => {
   const { theme } = useTheme();
 
   const restaurantsIds = useSelector(selectRestaurantsIds);
-
-  useEffect(() => {
-    setCurrentRestaurantId(restaurantsIds[0]);
-  }, [restaurantsIds, setCurrentRestaurantId]);
 
   return (
     <nav
@@ -24,12 +20,7 @@ export const Navbar = ({ currentRestaurantId, setCurrentRestaurantId }) => {
     >
       <ul>
         {restaurantsIds.map((id) => (
-          <NavbarItem
-            id={id}
-            key={id}
-            onClick={() => setCurrentRestaurantId(id)}
-            isActive={currentRestaurantId === id}
-          />
+          <NavbarItem id={id} key={id} />
         ))}
       </ul>
     </nav>

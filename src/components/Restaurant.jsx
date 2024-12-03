@@ -9,9 +9,12 @@ const Restaurant = ({ id }) => {
   const { user } = useAuth();
   const { theme } = useTheme();
 
-  const { name, menu, reviews } = useSelector((state) =>
-    selectRestaurantById(state, id),
-  );
+  const { name, menu, reviews } =
+    useSelector((state) => selectRestaurantById(state, id)) ?? {};
+
+  if (!name) {
+    return;
+  }
 
   return (
     <div
