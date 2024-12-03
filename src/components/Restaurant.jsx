@@ -4,6 +4,7 @@ import { ReviewForm, Reviews, Menu } from "@/components";
 import { useAuth, useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./Restaurant.module.css";
+import { Outlet } from "react-router";
 
 const Restaurant = ({ id }) => {
   const { user } = useAuth();
@@ -31,6 +32,8 @@ const Restaurant = ({ id }) => {
 
       <Reviews reviews={reviews} />
       {user.name && <ReviewForm />}
+
+      <Outlet />
     </div>
   );
 };

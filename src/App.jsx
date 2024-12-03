@@ -3,6 +3,7 @@ import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
 import { Layout, RestaurantsPage } from "@/components";
 import { store } from "@/store";
+import { RestaurantsDetails } from "./components/RestaurantsDetails";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/restaurants/:id",
-        element: <RestaurantsPage />,
+        element: <RestaurantsDetails />,
+        children: [
+          {
+            path: "/restaurants/:id/menu",
+            element: <p>!!! Menu !!!</p>,
+          },
+          {
+            path: "/restaurants/:id/reviews",
+            element: <p>!!! Reviews !!!</p>,
+          },
+        ],
       },
     ],
   },
@@ -24,6 +35,23 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  // {
+  //   path: '/info',
+  //   element: <h1>INFO!!!
+  //     <Outlet />
+  //   </h1>,
+  //   children: [
+  //     {
+  //       path: '/info/phone',
+  //       element: <div>...PHONE...</div>
+  //     },
+  //     {
+  //       path: '/info/adress',
+  //       element: <div>...ADRESS...</div>
+  //     }
+
+  //   ]
+  // }
 ]);
 
 const App = () => {

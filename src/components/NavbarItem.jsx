@@ -3,22 +3,24 @@ import classNames from "classnames";
 import { useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./NavbarItem.module.css";
-import { NavLink } from "react-router";
+import { NavLink, useParams } from "react-router";
 
 export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
 
+  const { id: pageid } = useParams();
+
   const { name } = useSelector((state) => selectRestaurantById(state, id));
 
   return (
-    <li
+    <NavLink
+      to={`/restaurants/${id}`}
       className={classNames(styles.item, {
-        [styles.active]: true,
+        [styles.active]: pageid === id,
         [theme == "dark" ? styles.dark : styles.light]: true,
       })}
-      key={id}
     >
-      <NavLink to={`/restaurants/${id}`}>{name}</NavLink>
-    </li>
+      {name}
+    </NavLink>
   );
 };

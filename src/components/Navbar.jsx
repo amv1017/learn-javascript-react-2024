@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { NavbarItem } from "@/components";
@@ -20,7 +19,9 @@ export const Navbar = () => {
     >
       <ul>
         {restaurantsIds.map((id) => (
-          <NavbarItem id={id} key={id} />
+          <li key={id}>
+            <NavbarItem id={id} />
+          </li>
         ))}
       </ul>
     </nav>
