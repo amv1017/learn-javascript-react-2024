@@ -34,11 +34,35 @@ const Restaurant = ({ id }) => {
     >
       <h2>{name}</h2>
 
-      <NavLink to={`${link}/menu`}>{"MENU"}</NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          classNames(
+            isActive ? styles.active : "",
+            styles.tab,
+            theme == "dark" ? styles.dark : styles.light,
+          )
+        }
+        to={`${link}/menu`}
+      >
+        MENU
+      </NavLink>
 
-      <NavLink to={`${link}/reviews`}>{"REVIEWS"}</NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          classNames(
+            isActive ? styles.active : "",
+            styles.tab,
+            theme == "dark" ? styles.dark : styles.light,
+          )
+        }
+        to={`${link}/reviews`}
+      >
+        REVIEWS
+      </NavLink>
 
-      <Outlet />
+      <div className={styles.container}>
+        <Outlet />
+      </div>
 
       <hr />
 

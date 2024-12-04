@@ -2,6 +2,7 @@ export * from "./Cart";
 export * from "./CartItem";
 export * from "./Counter";
 export * from "./DishCounter";
+export * from "./DishInfo";
 export * from "./Footer";
 export * from "./Header";
 export * from "./HomePage";

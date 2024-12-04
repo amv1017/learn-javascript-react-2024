@@ -1,0 +1,30 @@
+.container {
+  margin: 10px;
+}
+
+.link {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.link.dark {
+  background: navy;
+  color: #fff;
+}
+
+.link.light {
+  background: #acf;
+  color: #333;
+}
+
+.icon {
+  width: 10px;
+  margin-right: 10px;
+}
+
+.icon.dark {
+  filter: invert(1);
+}

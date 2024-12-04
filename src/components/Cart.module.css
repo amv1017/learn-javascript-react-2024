@@ -1,0 +1,36 @@
+.cart {
+  margin: 10px;
+  padding: 10px;
+  border: 1px navy solid;
+  border-radius: 10px;
+  width: 20vw;
+  min-height: 90vh;
+}
+
+.cart.dark {
+  background: navy;
+  color: #fff;
+}
+
+.cart.light {
+  background: #acf;
+  color: #333;
+}
+
+.cart hr {
+  margin: 0;
+  border: 1px #333 solid;
+}
+
+.cart.dark hr {
+  border: 1px #fff solid;
+}
+
+.cart.light hr {
+  border: 1px #333 solid;
+}
+
+.cart ul {
+  display: flex;
+  flex-direction: column;
+}

@@ -4,6 +4,7 @@ import { useAuth, useTheme } from "@/hooks";
 import { selectDishById } from "@/store/features/dishes";
 import styles from "./MenuDish.module.css";
 import { DishCounter } from "./DishCounter";
+import { NavLink } from "react-router";
 
 const MenuDish = ({ id }) => {
   const { user } = useAuth();
@@ -15,7 +16,9 @@ const MenuDish = ({ id }) => {
 
   return (
     <tr>
-      <td className={classNames(styles.name, common)}>{dish.name}</td>
+      <td className={classNames(styles.name, common)}>
+        <NavLink to={`/dish/${id}`}>{dish.name}</NavLink>
+      </td>
       <td className={classNames(styles.ingredients, common)}>
         {dish.ingredients.join(", ")}
       </td>

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { DishCounter } from "@/components";
 import { selectDishById } from "@/store/features/dishes";
+import styles from "./CartItem.module.css";
 
 export const CartItem = ({ id }) => {
   const dish = useSelector((state) => selectDishById(state, id));
@@ -10,7 +11,7 @@ export const CartItem = ({ id }) => {
   }
 
   return (
-    <div>
+    <div className={styles.cartItem}>
       {dish.name}
       <DishCounter id={id} />
     </div>
