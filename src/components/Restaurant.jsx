@@ -57,7 +57,7 @@ const Restaurant = ({ id }) => {
       </NavLink>
 
       <div className={styles.container}>
-        <Outlet context={{ id }} />
+        <Outlet />
       </div>
 
       <hr />

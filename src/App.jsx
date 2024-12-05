@@ -3,8 +3,8 @@ import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
 import { Layout } from "@/components/Layout";
 import { RestaurantsPage } from "@/components/RestaurantsPage";
 import { HomePage } from "@/components/HomePage";
-import { Menu } from "@/components/Menu";
-import { Reviews } from "@/components/Reviews";
+import { ReviewsWidget } from "./components/ReviewsWidget";
+import { MenuWidget } from "./components/MenuWidget";
 import { DishInfo } from "@/components/DishInfo";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
 import { store } from "@/store";
@@ -26,11 +26,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/restaurants/:id/menu",
-            element: <Menu />,
+            element: <MenuWidget />,
           },
           {
             path: "/restaurants/:id/reviews",
-            element: <Reviews />,
+            element: <ReviewsWidget />,
           },
         ],
       },

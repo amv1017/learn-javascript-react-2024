@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
-import { useOutletContext } from "react-router";
+
 import { Review } from "./Review";
 import { selectRestaurantById } from "@/store/features/restaurants";
 
-const Reviews = () => {
-  const { id } = useOutletContext();
-
+const Reviews = ({ id }) => {
   const { reviews } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
