@@ -1,19 +1,14 @@
-import { useState } from "react";
-import { Navbar, Restaurant } from "@/components";
+import { Restaurant } from "./Restaurant";
+import { useParams } from "react-router";
 
 const RestaurantsPage = () => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState("");
+  const { id } = useParams();
 
   return (
     <>
-      <Navbar
-        currentRestaurantId={currentRestaurantId}
-        setCurrentRestaurantId={setCurrentRestaurantId}
-      />
-      {currentRestaurantId &&
-        [...Array(10)].map((_, k) => (
-          <Restaurant id={currentRestaurantId} key={k} />
-        ))}
+      {[...Array(10)].map((_, k) => (
+        <Restaurant id={id} key={k} />
+      ))}
     </>
   );
 };

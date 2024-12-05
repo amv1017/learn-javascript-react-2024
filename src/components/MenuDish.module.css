@@ -21,9 +21,23 @@
 }
 
 td.dark {
+  color: #fff;
   border: 1px #fff dashed;
 }
 
 td.light {
+  color: #333;
   border: 1px #333 dashed;
+}
+
+.name a {
+  text-decoration: underline dotted orange;
+}
+
+.name.dark a {
+  color: #fff;
+}
+
+.name.light a {
+  color: #333;
 }

@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import classNames from "classnames";
-import { Counter } from "@/components";
+import { Counter } from "./Counter";
 import { useTheme } from "@/hooks";
 import { limitAmount } from "@/functions";
 import styles from "./ReviewForm.module.css";

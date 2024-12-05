@@ -1,24 +1,27 @@
 import { useSelector } from "react-redux";
+import { NavLink, useParams } from "react-router";
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./NavbarItem.module.css";
 
-export const NavbarItem = ({ id, onClick, isActive }) => {
+export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
 
   const { name } = useSelector((state) => selectRestaurantById(state, id));
 
+  const { id: paramid } = useParams();
+
   return (
-    <li
-      onClick={onClick}
-      className={classNames(styles.item, {
-        [styles.active]: isActive,
-        [theme == "dark" ? styles.dark : styles.light]: true,
-      })}
-      key={id}
+    <NavLink
+      to={`/restaurants/${id}/menu`}
+      className={classNames(
+        styles.item,
+        id === paramid ? styles.active : "",
+        theme == "dark" ? styles.dark : styles.light,
+      )}
     >
-      <span>{name}</span>
-    </li>
+      {name}
+    </NavLink>
   );
 };

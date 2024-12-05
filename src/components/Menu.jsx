@@ -1,11 +1,21 @@
+import { useSelector } from "react-redux";
+
 import classNames from "classnames";
-import { MenuDish } from "@/components";
+import { MenuDish } from "./MenuDish";
 import { useAuth, useTheme } from "@/hooks";
 import styles from "./Menu.module.css";
+import { selectRestaurantById } from "@/store/features/restaurants";
 
-const Menu = ({ menu }) => {
+const Menu = ({ id }) => {
   const { user } = useAuth();
   const { theme } = useTheme();
+
+  const { menu } =
+    useSelector((state) => selectRestaurantById(state, id)) ?? {};
+
+  if (!menu) {
+    return;
+  }
 
   const common = theme == "dark" ? styles.dark : styles.light;
 

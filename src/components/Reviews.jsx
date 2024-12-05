@@ -1,6 +1,16 @@
-import { Review } from "@/components";
+import { useSelector } from "react-redux";
 
-const Reviews = ({ reviews }) => {
+import { Review } from "./Review";
+import { selectRestaurantById } from "@/store/features/restaurants";
+
+const Reviews = ({ id }) => {
+  const { reviews } =
+    useSelector((state) => selectRestaurantById(state, id)) ?? {};
+
+  if (!reviews) {
+    return;
+  }
+
   return reviews ? (
     <ul>
       {reviews.map((id) => (

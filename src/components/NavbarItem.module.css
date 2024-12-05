@@ -23,3 +23,7 @@
 .item.dark.active {
   filter: hue-rotate(-60deg);
 }
+
+a.item {
+  text-decoration: none;
+}
