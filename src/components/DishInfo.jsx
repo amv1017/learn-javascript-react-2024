@@ -1,11 +1,11 @@
 import { useParams, NavLink } from "react-router";
 import classNames from "classnames";
-import { MenuDish } from "@/components";
+import { MenuDish } from "./MenuDish";
 import { useTheme } from "@/hooks";
 import goback from "@/static/go-back.svg";
 import styles from "./DishInfo.module.css";
 
-const Dish = () => {
+const DishInfo = () => {
   const { id } = useParams();
 
   const { theme } = useTheme();
@@ -34,4 +34,4 @@ const Dish = () => {
   );
 };
 
-export { Dish };
+export { DishInfo };

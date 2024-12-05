@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Counter } from "@/components";
+import { Counter } from "./Counter";
 import {
   addToCart,
   removeFromCart,

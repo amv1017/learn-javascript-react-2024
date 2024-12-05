@@ -1,4 +1,4 @@
-import { Restaurant } from "@/components";
+import { Restaurant } from "./Restaurant";
 import { useParams } from "react-router";
 
 const RestaurantsPage = () => {

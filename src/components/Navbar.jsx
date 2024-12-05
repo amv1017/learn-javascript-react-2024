@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { NavbarItem } from "@/components";
+import { NavbarItem } from "./NavbarItem";
 import { useTheme } from "@/hooks";
 import { selectRestaurantsIds } from "@/store/features/restaurants";
 import styles from "./Navbar.module.css";

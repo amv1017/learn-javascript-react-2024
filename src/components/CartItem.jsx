@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { DishCounter } from "@/components";
+import { DishCounter } from "./DishCounter";
 import { selectDishById } from "@/store/features/dishes";
 import styles from "./CartItem.module.css";
 

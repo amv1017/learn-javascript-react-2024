@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { ReviewStars } from "@/components";
+import { ReviewStars } from "./ReviewStars";
 import { useTheme } from "@/hooks";
 import { selectReviewById } from "@/store/features/reviews";
 import { selectUserById } from "@/store/features/users";

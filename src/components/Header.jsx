@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import { SwitchTheme, UserButton } from "@/components";
+import { SwitchTheme } from "./SwitchTheme";
+import { UserButton } from "./UserButton";
 import { useTheme } from "@/hooks";
 import styles from "./Header.module.css";
 

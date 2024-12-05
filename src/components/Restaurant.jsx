@@ -1,8 +1,7 @@
-import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, NavLink, useLocation } from "react-router";
 import classNames from "classnames";
-import { ReviewForm } from "@/components";
+import { ReviewForm } from "./ReviewForm";
 import { useAuth, useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./Restaurant.module.css";
@@ -20,10 +19,7 @@ const Restaurant = ({ id }) => {
     return;
   }
 
-  const link = useMemo(
-    () => pathname.slice(0, pathname.lastIndexOf("/")),
-    [pathname],
-  );
+  const link = pathname.slice(0, pathname.lastIndexOf("/"));
 
   return (
     <div
@@ -61,7 +57,7 @@ const Restaurant = ({ id }) => {
       </NavLink>
 
       <div className={styles.container}>
-        <Outlet />
+        <Outlet context={{ id }} />
       </div>
 
       <hr />

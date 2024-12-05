@@ -1,14 +1,12 @@
 import { Provider } from "react-redux";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
+import { Layout } from "@/components/Layout";
+import { RestaurantsPage } from "@/components/RestaurantsPage";
+import { HomePage } from "@/components/HomePage";
+import { Menu } from "@/components/Menu";
+import { Reviews } from "@/components/Reviews";
+import { DishInfo } from "@/components/DishInfo";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
-import {
-  Layout,
-  RestaurantsPage,
-  HomePage,
-  Menu,
-  Reviews,
-  Dish,
-} from "@/components";
 import { store } from "@/store";
 
 const router = createBrowserRouter([
@@ -46,7 +44,7 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  { path: "/dish/:id", element: <Dish info /> },
+  { path: "/dish/:id", element: <DishInfo info /> },
 ]);
 
 const App = () => {

@@ -1,4 +1,4 @@
-import { Navbar } from "@/components";
+import { Navbar } from "./Navbar";
 import { Outlet } from "react-router";
 
 const HomePage = () => {

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { NavLink } from "react-router";
-import { DishCounter } from "@/components";
+import { DishCounter } from "./DishCounter";
 import { useAuth, useTheme } from "@/hooks";
 import { selectDishById } from "@/store/features/dishes";
 import styles from "./MenuDish.module.css";

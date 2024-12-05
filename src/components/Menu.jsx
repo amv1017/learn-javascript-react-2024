@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useOutletContext } from "react-router";
 import classNames from "classnames";
-import { MenuDish } from "@/components";
+import { MenuDish } from "./MenuDish";
 import { useAuth, useTheme } from "@/hooks";
 import styles from "./Menu.module.css";
 import { selectRestaurantById } from "@/store/features/restaurants";
@@ -10,7 +10,7 @@ const Menu = () => {
   const { user } = useAuth();
   const { theme } = useTheme();
 
-  const { id } = useParams();
+  const { id } = useOutletContext();
 
   const { menu } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
