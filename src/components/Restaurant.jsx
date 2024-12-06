@@ -5,6 +5,9 @@ import { ReviewForm } from "./ReviewForm";
 import { useAuth, useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./Restaurant.module.css";
+import { useRequest } from "@/hooks";
+import { getDishes } from "@/store/features/dishes";
+import { getReviews } from "@/store/features/reviews";
 
 const Restaurant = ({ id }) => {
   const { user } = useAuth();
@@ -15,8 +18,19 @@ const Restaurant = ({ id }) => {
   const { name } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
+  const requestMenuStatus = useRequest(getDishes);
+  const requestReviewsStatus = useRequest(getReviews);
+
   if (!name) {
     return;
+  }
+
+  if (requestMenuStatus === "pending" || requestReviewsStatus === "pending") {
+    return "loading ...";
+  }
+
+  if (requestMenuStatus === "rejected" || requestReviewsStatus === "rejected") {
+    return "error";
   }
 
   const link = pathname.slice(0, pathname.lastIndexOf("/"));

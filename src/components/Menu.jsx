@@ -12,7 +12,7 @@ const Menu = ({ id }) => {
   const { menu } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
-  if (!menu) {
+  if (!menu.length) {
     return;
   }
 

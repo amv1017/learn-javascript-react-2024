@@ -8,9 +8,14 @@ import styles from "./NavbarItem.module.css";
 export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
 
-  const { name } = useSelector((state) => selectRestaurantById(state, id));
+  const { name } =
+    useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
   const { id: paramid } = useParams();
+
+  if (!name) {
+    return;
+  }
 
   return (
     <NavLink

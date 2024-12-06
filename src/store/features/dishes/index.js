@@ -1,21 +1,44 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedDishes } from "@/mocks";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
+import { API_ROUTE } from "@/constants.js";
 
-const initialState = {
-  ids: normalizedDishes.map(({ id }) => id),
-  values: normalizedDishes.reduce((result, current) => {
-    result[current.id] = current;
+export const getDishes = createAsyncThunk(
+  "dishes/getDishes",
+  async (_, { rejectWithValue }) => {
+    // get dishes from API
+    const response = await fetch(API_ROUTE + "/dishes");
+    const result = await response.json();
+
+    if (!result.length) {
+      rejectWithValue("No dishes found");
+      return;
+    }
+
     return result;
-  }, {}),
-};
+  },
+);
+
+const dishesAdapter = createEntityAdapter();
+
+const initialState = dishesAdapter.getInitialState({
+  ids: [],
+  entities: {},
+});
 
 export const dishesSlice = createSlice({
   name: "dishes",
   initialState,
   selectors: {
     selectDishesIds: (state) => state.ids,
-    selectDishById: (state, id) => state.values[id],
+    selectDishById: (state, id) => state.entities[id],
   },
+  extraReducers: (builder) =>
+    builder.addCase(getDishes.fulfilled, (state, { payload }) => {
+      dishesAdapter.setMany(state, payload);
+    }),
 });
 
 /*

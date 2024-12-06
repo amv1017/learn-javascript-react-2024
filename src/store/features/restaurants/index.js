@@ -1,21 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedRestaurants } from "@/mocks";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
+import { API_ROUTE } from "@/constants.js";
 
-const initialState = {
-  ids: normalizedRestaurants.map(({ id }) => id),
-  values: normalizedRestaurants.reduce((result, current) => {
-    result[current.id] = current;
+export const getRestaurants = createAsyncThunk(
+  "restaurants/getRestaurants",
+  async (_, { rejectWithValue }) => {
+    const response = await fetch(API_ROUTE + "/restaurants");
+    const result = await response.json();
+
+    if (!result.length) {
+      rejectWithValue("No restaurants found");
+      return;
+    }
+
     return result;
-  }, {}),
-};
+  },
+);
+
+const restaurantsAdapter = createEntityAdapter();
+
+const initialState = restaurantsAdapter.getInitialState({
+  ids: [],
+  entities: {},
+});
 
 export const restaurantsSlice = createSlice({
   name: "restaurants",
   initialState,
   selectors: {
     selectRestaurantsIds: (state) => state.ids,
-    selectRestaurantById: (state, id) => state.values[id],
+    selectRestaurantById: (state, id) => state.entities[id],
   },
+  extraReducers: (builder) =>
+    builder.addCase(getRestaurants.fulfilled, (state, { payload }) => {
+      restaurantsAdapter.setMany(state, payload);
+    }),
 });
 
 export const { selectRestaurantsIds, selectRestaurantById } =
