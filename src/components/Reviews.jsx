@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import { Review } from "./Review";
 import { selectRestaurantById } from "@/store/features/restaurants";
 
