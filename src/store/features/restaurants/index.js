@@ -31,7 +31,17 @@ export const restaurantsSlice = createSlice({
   name: "restaurants",
   initialState,
   selectors: {
-    selectRestaurantsIds: (state) => state.ids,
+    selectRestaurantsIds: (state) => {
+      /*
+      console.log(
+        Object.keys(state.entities).filter(
+          (e) => state.entities[e].type === "restaurant",
+        ),
+        state.ids,
+      );
+      */
+      return state.ids;
+    },
     selectRestaurantById: (state, id) => state.entities[id],
   },
   extraReducers: (builder) =>

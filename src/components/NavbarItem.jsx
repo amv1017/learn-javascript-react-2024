@@ -8,25 +8,27 @@ import styles from "./NavbarItem.module.css";
 export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
 
-  const { name } =
+  const { name, description } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
   const { id: paramid } = useParams();
 
-  if (!name) {
+  if (!name || !description) {
     return;
   }
 
   return (
-    <NavLink
-      to={`/restaurants/${id}/menu`}
-      className={classNames(
-        styles.item,
-        id === paramid ? styles.active : "",
-        theme == "dark" ? styles.dark : styles.light,
-      )}
-    >
-      {name}
-    </NavLink>
+    <li>
+      <NavLink
+        to={`/restaurants/${id}/menu`}
+        className={classNames(
+          styles.item,
+          id === paramid ? styles.active : "",
+          theme == "dark" ? styles.dark : styles.light,
+        )}
+      >
+        {name}
+      </NavLink>
+    </li>
   );
 };

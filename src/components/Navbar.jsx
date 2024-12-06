@@ -31,9 +31,7 @@ export const Navbar = () => {
     >
       <ul>
         {restaurantsIds.map((id) => (
-          <li key={id}>
-            <NavbarItem id={id} />
-          </li>
+          <NavbarItem id={id} key={id} />
         ))}
       </ul>
     </nav>
