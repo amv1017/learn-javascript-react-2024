@@ -18,17 +18,15 @@ export const NavbarItem = ({ id }) => {
   }
 
   return (
-    <li>
-      <NavLink
-        to={`/restaurants/${id}/menu`}
-        className={classNames(
-          styles.item,
-          id === paramid ? styles.active : "",
-          theme == "dark" ? styles.dark : styles.light,
-        )}
-      >
-        {name}
-      </NavLink>
-    </li>
+    <NavLink
+      to={`/restaurants/${id}/menu`}
+      className={classNames(
+        styles.item,
+        id === paramid ? styles.active : "",
+        theme == "dark" ? styles.dark : styles.light,
+      )}
+    >
+      {name}
+    </NavLink>
   );
 };

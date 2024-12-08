@@ -6,8 +6,8 @@ import { useAuth, useTheme } from "@/hooks";
 import { selectRestaurantById } from "@/store/features/restaurants";
 import styles from "./Restaurant.module.css";
 import { useRequest } from "@/hooks";
-import { getDishes } from "@/store/features/dishes";
-import { getReviews } from "@/store/features/reviews";
+import { getDishes } from "@/store/features/dishes/get-dishes";
+import { getReviews } from "@/store/features/reviews/get-reviews";
 
 const Restaurant = ({ id }) => {
   const { user } = useAuth();

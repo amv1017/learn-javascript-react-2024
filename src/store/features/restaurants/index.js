@@ -1,35 +1,11 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  createEntityAdapter,
-} from "@reduxjs/toolkit";
-import { API_ROUTE } from "@/constants.js";
-
-export const getRestaurants = createAsyncThunk(
-  "restaurants/getRestaurants",
-  async (_, { rejectWithValue }) => {
-    const response = await fetch(API_ROUTE + "/restaurants");
-    const result = await response.json();
-
-    if (!result.length) {
-      rejectWithValue("No restaurants found");
-      return;
-    }
-
-    return result;
-  },
-);
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { getRestaurants } from "./get-restaurants";
 
 const restaurantsAdapter = createEntityAdapter();
 
-const initialState = restaurantsAdapter.getInitialState({
-  ids: [],
-  entities: {},
-});
-
 export const restaurantsSlice = createSlice({
   name: "restaurants",
-  initialState,
+  initialState: restaurantsAdapter.getInitialState(),
   selectors: {
     selectRestaurantsIds: (state) => {
       /*
