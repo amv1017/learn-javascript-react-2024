@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import classNames from "classnames";
 import { MenuDish } from "./MenuDish";
 import { useAuth, useTheme } from "@/hooks";
@@ -13,7 +12,7 @@ const Menu = ({ id }) => {
   const { menu } =
     useSelector((state) => selectRestaurantById(state, id)) ?? {};
 
-  if (!menu) {
+  if (!menu.length) {
     return;
   }
 

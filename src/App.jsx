@@ -3,8 +3,8 @@ import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
 import { Layout } from "@/components/Layout";
 import { RestaurantsPage } from "@/components/RestaurantsPage";
 import { HomePage } from "@/components/HomePage";
-import { ReviewsWidget } from "./components/ReviewsWidget";
-import { MenuWidget } from "./components/MenuWidget";
+import { ReviewsWidget } from "@/components/ReviewsWidget";
+import { MenuWidget } from "@/components/MenuWidget";
 import { DishInfo } from "@/components/DishInfo";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
 import { store } from "@/store";
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  { path: "/dish/:id", element: <DishInfo info /> },
+  { path: "/dish/:id", element: <DishInfo /> },
 ]);
 
 const App = () => {

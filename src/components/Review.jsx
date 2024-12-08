@@ -13,7 +13,11 @@ const Review = ({ id }) => {
     selectReviewById(state, id),
   );
 
-  const { name } = useSelector((state) => selectUserById(state, userId));
+  const { name } = useSelector((state) => selectUserById(state, userId)) ?? {};
+
+  if (!name) {
+    return;
+  }
 
   return (
     <li

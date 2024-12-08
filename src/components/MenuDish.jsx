@@ -12,6 +12,10 @@ const MenuDish = ({ id }) => {
 
   const dish = useSelector((state) => selectDishById(state, id));
 
+  if (!dish) {
+    return;
+  }
+
   const common = theme == "dark" ? styles.dark : styles.light;
 
   return (
