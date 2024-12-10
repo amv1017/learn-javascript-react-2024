@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import classNames from "classnames";
 import { Counter } from "./Counter";
-import { useTheme } from "@/hooks";
+import { useTheme, useAuth } from "@/hooks";
 import { limitAmount } from "@/functions";
 import styles from "./ReviewForm.module.css";
 
@@ -42,15 +42,24 @@ const reducer = (state, action) => {
   }
 };
 
-const ReviewForm = () => {
+const ReviewForm = ({ onAddReview }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { theme } = useTheme();
+  const { user } = useAuth();
 
   const common = theme == "dark" ? styles.dark : styles.light;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await onAddReview({
+        ...state,
+        userId: user.id,
+      });
+    } catch (error) {
+      console.error("Failed to add review: ", error);
+    }
   };
 
   return (
@@ -58,6 +67,7 @@ const ReviewForm = () => {
       className={classNames(styles.feedback, common)}
       onSubmit={handleSubmit}
     >
+      {/*
       <div>
         <label htmlFor="name">Name</label>
         <input
@@ -70,6 +80,7 @@ const ReviewForm = () => {
           placeholder="Your name"
         />
       </div>
+      */}
 
       <textarea
         value={state.text}

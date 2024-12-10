@@ -3,7 +3,7 @@ import { USER_KEY, USER_NAME } from "@/mocks";
 import { AuthContext } from ".";
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({ name: "" });
+  const [user, setUser] = useState({ name: "", id: "" });
 
   useEffect(() => {
     const user = localStorage.getItem(USER_KEY);
@@ -13,7 +13,10 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   const login = () => {
-    const userModified = { ...user, name: USER_NAME };
+    const userModified = {
+      id: USER_KEY.split("_")[1],
+      name: USER_NAME,
+    };
     setUser(userModified);
     localStorage.setItem(USER_KEY, JSON.stringify(userModified));
   };

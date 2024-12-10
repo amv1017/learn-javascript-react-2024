@@ -1,35 +1,54 @@
-import { useSelector } from "react-redux";
+import { useCallback } from "react";
 import { Review } from "./Review";
-import { selectRestaurantById } from "@/store/features/restaurants";
-import { useRequest } from "@/hooks";
-import { getUsers } from "@/store/features/users/get-users";
+import {
+  useGetReviewsByRestaurantIdQuery,
+  useAddReviewMutation,
+} from "@/store/features/api";
+import { useAuth } from "@/hooks";
+import { ReviewForm } from "./ReviewForm";
 
 const Reviews = ({ id }) => {
-  const { reviews } =
-    useSelector((state) => selectRestaurantById(state, id)) ?? {};
+  const { user } = useAuth();
+  const {
+    data,
+    isLoading: isLoadingReviews,
+    isError,
+  } = useGetReviewsByRestaurantIdQuery(id);
+  const [addReview, { isLoading: isLoadingForm }] = useAddReviewMutation();
 
-  const requestStatus = useRequest(getUsers);
+  const handleAddReview = useCallback(
+    (review) => {
+      addReview({ restaurantId: id, review });
+    },
+    [addReview, id],
+  );
 
-  if (!reviews) {
-    return;
-  }
-
-  if (requestStatus === "pending") {
+  if (isLoadingReviews || isLoadingForm) {
     return "loading ...";
   }
 
-  if (requestStatus === "rejected") {
+  if (isError) {
     return "error";
   }
 
-  return reviews ? (
-    <ul>
-      {reviews.map((id) => (
-        <Review id={id} key={id} />
-      ))}
-    </ul>
-  ) : (
-    <span>no reviews found</span>
+  return (
+    <>
+      {data ? (
+        <ul>
+          {data.map((review) => (
+            <Review {...review} key={review.id} />
+          ))}
+        </ul>
+      ) : (
+        <span>no reviews found</span>
+      )}
+      {user.name && (
+        <>
+          <hr />
+          <ReviewForm onAddReview={handleAddReview} />
+        </>
+      )}
+    </>
   );
 };
 

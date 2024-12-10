@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux";
 import { DishCounter } from "./DishCounter";
-import { selectDishById } from "@/store/features/dishes";
 import styles from "./CartItem.module.css";
 
 export const CartItem = ({ id }) => {
-  const dish = useSelector((state) => selectDishById(state, id));
+  const dish = { name: "_dish_" };
 
   if (!dish) {
     return null;

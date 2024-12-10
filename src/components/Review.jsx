@@ -1,23 +1,27 @@
-import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { ReviewStars } from "./ReviewStars";
 import { useTheme } from "@/hooks";
-import { selectReviewById } from "@/store/features/reviews";
-import { selectUserById } from "@/store/features/users";
+import { useGetUsersQuery } from "@/store/features/api";
 import styles from "./Review.module.css";
 
-const Review = ({ id }) => {
+const Review = ({ id, rating, text, userId }) => {
   const { theme } = useTheme();
 
-  const { text, rating, userId } = useSelector((state) =>
-    selectReviewById(state, id),
-  );
+  const { data, isLoading, isError } = useGetUsersQuery(userId);
 
-  const { name } = useSelector((state) => selectUserById(state, userId)) ?? {};
+  if (isLoading) {
+    return "loading ...";
+  }
 
-  if (!name) {
+  if (isError) {
+    return "error";
+  }
+
+  if (!data?.length) {
     return;
   }
+
+  const name = data.find(({ id }) => id === userId).name;
 
   return (
     <li
