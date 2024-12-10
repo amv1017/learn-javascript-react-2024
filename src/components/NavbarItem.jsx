@@ -1,19 +1,25 @@
-import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router";
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
-import { selectRestaurantById } from "@/store/features/restaurants";
+import { useGetRestaurantByIdQuery } from "@/store/features/api";
 import styles from "./NavbarItem.module.css";
 
 export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
 
-  const { name, description } =
-    useSelector((state) => selectRestaurantById(state, id)) ?? {};
-
   const { id: paramid } = useParams();
 
-  if (!name || !description) {
+  const { data, isLoading, isError } = useGetRestaurantByIdQuery(id);
+
+  if (isLoading) {
+    return "loading ...";
+  }
+
+  if (isError) {
+    return "error";
+  }
+
+  if (!data?.name || !data?.description) {
     return;
   }
 
@@ -26,7 +32,7 @@ export const NavbarItem = ({ id }) => {
         theme == "dark" ? styles.dark : styles.light,
       )}
     >
-      {name}
+      {data.name}
     </NavLink>
   );
 };

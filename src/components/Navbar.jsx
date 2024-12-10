@@ -1,26 +1,27 @@
-import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { NavbarItem } from "./NavbarItem";
 import { useTheme } from "@/hooks";
-import { selectRestaurantsIds } from "@/store/features/restaurants";
+import { useGetRestaurantsQuery } from "@/store/features/api";
 import styles from "./Navbar.module.css";
-import { useRequest } from "@/hooks";
-import { getRestaurants } from "@/store/features/restaurants/get-restaurants";
 
 export const Navbar = () => {
   const { theme } = useTheme();
 
-  const restaurantsIds = useSelector(selectRestaurantsIds);
+  const { data, isLoading, isError } = useGetRestaurantsQuery();
 
-  const requestStatus = useRequest(getRestaurants);
-
-  if (requestStatus === "pending") {
+  if (isLoading) {
     return "loading ...";
   }
 
-  if (requestStatus === "rejected") {
+  if (isError) {
     return "error";
   }
+
+  if (!data.length) {
+    return null;
+  }
+
+  const restaurantsIds = data.map(({ id }) => id);
 
   return (
     <nav
@@ -32,7 +33,7 @@ export const Navbar = () => {
       <ul>
         {restaurantsIds.map((id) => (
           <li key={id}>
-            <NavbarItem id={id} key={id} />
+            <NavbarItem id={id} />
           </li>
         ))}
       </ul>
