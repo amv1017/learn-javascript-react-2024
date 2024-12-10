@@ -1,11 +1,29 @@
 import { DishCounter } from "./DishCounter";
+import { useGetDishesByRestaurantIdQuery } from "@/store/features/api";
 import styles from "./CartItem.module.css";
 
 export const CartItem = ({ id }) => {
-  const dish = { name: "_dish_" };
+  const {
+    data: dish,
+    isLoading,
+    isError,
+  } = useGetDishesByRestaurantIdQuery(undefined, {
+    selectFromResult: (result) => ({
+      ...result,
+      data: result?.data?.find(({ id: restaurantId }) => restaurantId === id),
+    }),
+  });
 
-  if (!dish) {
-    return null;
+  if (isLoading) {
+    return "loading ...";
+  }
+
+  if (isError) {
+    return "error";
+  }
+
+  if (!dish?.name) {
+    return;
   }
 
   return (

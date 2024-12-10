@@ -67,21 +67,6 @@ const ReviewForm = ({ onAddReview }) => {
       className={classNames(styles.feedback, common)}
       onSubmit={handleSubmit}
     >
-      {/*
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          name="name"
-          value={state.name}
-          onChange={(e) =>
-            dispatch({ type: ACTION_TYPES.SET_NAME, payload: e.target.value })
-          }
-          type="text"
-          placeholder="Your name"
-        />
-      </div>
-      */}
-
       <textarea
         value={state.text}
         onChange={(e) =>
