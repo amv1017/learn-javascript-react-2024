@@ -1,8 +1,8 @@
-import { useParams } from "react-router";
+
 import { Menu } from "./Menu";
 
-const MenuWidget = () => {
-  const { id } = useParams();
+const MenuWidget = async ({params}) => {
+  const { id } = await params;
 
   return <Menu id={id} />;
 };

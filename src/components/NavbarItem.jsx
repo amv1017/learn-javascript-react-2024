@@ -1,8 +1,9 @@
-import { NavLink, useParams } from "react-router";
+import { useParams } from "next/navigation";
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
 import { useGetRestaurantByIdQuery } from "@/store/features/api";
 import styles from "./NavbarItem.module.css";
+import Link from "next/link";
 
 export const NavbarItem = ({ id }) => {
   const { theme } = useTheme();
@@ -24,8 +25,8 @@ export const NavbarItem = ({ id }) => {
   }
 
   return (
-    <NavLink
-      to={`/restaurants/${id}/menu`}
+    <Link
+      href={`/restaurants/${id}/menu`}
       className={classNames(
         styles.item,
         id === paramid ? styles.active : "",
@@ -33,6 +34,6 @@ export const NavbarItem = ({ id }) => {
       )}
     >
       {data.name}
-    </NavLink>
+    </Link>
   );
 };

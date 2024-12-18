@@ -1,15 +1,16 @@
-import { Outlet, NavLink, useLocation } from "react-router";
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import classNames from "classnames";
 import { useTheme } from "@/hooks";
 import { useGetRestaurantByIdQuery } from "@/store/features/api";
 import styles from "./Restaurant.module.css";
 
-const Restaurant = ({ id }) => {
+const Restaurant = ({ id, children }) => {
   const { theme } = useTheme();
 
-  const { pathname } = useLocation();
-
-  const link = pathname.slice(0, pathname.lastIndexOf("/"));
+  const pathname = usePathname();
 
   const { data, isLoading, isError } = useGetRestaurantByIdQuery(id);
 
@@ -34,7 +35,7 @@ const Restaurant = ({ id }) => {
     >
       <h2>{data.name}</h2>
 
-      <NavLink
+      <Link
         className={({ isActive }) =>
           classNames(
             isActive ? styles.active : "",
@@ -42,12 +43,12 @@ const Restaurant = ({ id }) => {
             theme == "dark" ? styles.dark : styles.light,
           )
         }
-        to={`${link}/menu`}
+        href={`${pathname.slice(0, pathname.lastIndexOf("/"))}/menu`}
       >
         MENU
-      </NavLink>
+      </Link>
 
-      <NavLink
+      <Link
         className={({ isActive }) =>
           classNames(
             isActive ? styles.active : "",
@@ -55,14 +56,12 @@ const Restaurant = ({ id }) => {
             theme == "dark" ? styles.dark : styles.light,
           )
         }
-        to={`${link}/reviews`}
+        href={`${pathname.slice(0, pathname.lastIndexOf("/"))}/reviews`}
       >
         REVIEWS
-      </NavLink>
+      </Link>
 
-      <div className={styles.container}>
-        <Outlet />
-      </div>
+      <div className={styles.container}>{children}</div>
     </div>
   );
 };

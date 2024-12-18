@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { ThemeContext } from ".";
 import { THEME_KEY } from "@/mocks";

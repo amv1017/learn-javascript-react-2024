@@ -31,7 +31,7 @@ const Review = ({ id, rating, text, userId }) => {
       )}
       key={id}
     >
-      <main>
+      <main className={styles.main}>
         <h4>{name}</h4>
         <ReviewStars rating={rating} />
       </main>

@@ -1,3 +1,5 @@
+'use client'
+
 import { useReducer } from "react";
 import classNames from "classnames";
 import { Counter } from "./Counter";

@@ -1,8 +1,8 @@
-import { useParams } from "react-router";
+
 import { Reviews } from "./Reviews";
 
-const ReviewsWidget = () => {
-  const { id } = useParams();
+const ReviewsWidget = async ({params}) => {
+  const  {id } = await params
 
   return <Reviews id={id} />;
 };

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_ROUTE } from "@/constants.js";
+import { API_ROUTE } from "@/constants";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -32,6 +32,9 @@ export const apiSlice = createApi({
         { type: "Reviews", restaurantId },
       ],
     }),
+    getDishById: builder.query({
+      query: (dishId) => `/dish/${dishId}`,
+    }),
   }),
 });
 
@@ -42,4 +45,5 @@ export const {
   useGetReviewsByRestaurantIdQuery,
   useGetDishesByRestaurantIdQuery,
   useAddReviewMutation,
+  useGetDishByIdQuery,
 } = apiSlice;

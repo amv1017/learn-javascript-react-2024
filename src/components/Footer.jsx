@@ -1,3 +1,5 @@
-const Footer = () => <footer>Favorite Restaurants</footer>;
+const Footer = () => {
+  return <footer>Favorite Restaurants</footer>;
+};
 
 export { Footer };

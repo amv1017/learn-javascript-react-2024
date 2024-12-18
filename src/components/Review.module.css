@@ -3,9 +3,10 @@
   padding: 15px;
   margin: 10px;
   border-radius: 10px;
+  list-style: none;
 }
 
-main {
+.main {
   display: flex;
   justify-content: space-evenly;
 }
