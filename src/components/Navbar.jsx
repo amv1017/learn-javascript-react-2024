@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from "classnames";
 import { NavbarItem } from "./NavbarItem";
 import { useTheme } from "@/hooks";

@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback } from "react";
 import { Review } from "./Review";
 import {
