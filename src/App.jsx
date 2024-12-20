@@ -1,63 +1,19 @@
-import { Provider } from "react-redux";
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router";
-import { Layout } from "@/components/Layout";
-import { RestaurantsPage } from "@/components/RestaurantsPage";
-import { HomePage } from "@/components/HomePage";
-import { ReviewsWidget } from "@/components/ReviewsWidget";
-import { MenuWidget } from "@/components/MenuWidget";
-import { DishInfo } from "@/components/DishInfo";
+"use client";
+
+import { StoreProvider } from "@/store/StoreProvider";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
-import { store } from "@/store";
+import { Layout } from "@/components/Layout";
+import "./app.css";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <Navigate to="/restaurants" />,
-  },
-  {
-    path: "/restaurants",
-    element: <HomePage />,
-    errorElement: <Navigate to="/restaurants" />,
-    children: [
-      {
-        path: "/restaurants/:id",
-        element: <RestaurantsPage />,
-        children: [
-          {
-            path: "/restaurants/:id/menu",
-            element: <MenuWidget />,
-          },
-          {
-            path: "/restaurants/:id/reviews",
-            element: <ReviewsWidget />,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <p>About Page</p>
-      </>
-    ),
-  },
-  { path: "/dish/:id", element: <DishInfo /> },
-]);
-
-const App = () => {
+const App = ({ children }) => {
   return (
-    <Provider store={store}>
+    <StoreProvider>
       <AuthContextProvider>
         <ThemeContextProvider>
-          <Layout>
-            <RouterProvider router={router} />
-          </Layout>
+          <Layout>{children}</Layout>
         </ThemeContextProvider>
       </AuthContextProvider>
-    </Provider>
+    </StoreProvider>
   );
 };
 

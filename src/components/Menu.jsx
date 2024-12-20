@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { MenuDish } from "./MenuDish";
 import { useAuth, useTheme } from "@/hooks";

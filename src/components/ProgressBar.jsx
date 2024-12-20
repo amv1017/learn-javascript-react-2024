@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { scrollPercentage } from "@/functions";
 import styles from "./ProgressBar.module.css";

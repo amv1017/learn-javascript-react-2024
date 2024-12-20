@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { USER_KEY, USER_NAME } from "@/mocks";
 import { AuthContext } from ".";
