@@ -3,7 +3,7 @@
 import { StoreProvider } from "@/store/StoreProvider";
 import { AuthContextProvider, ThemeContextProvider } from "@/context";
 import { Layout } from "@/components/Layout";
-import './app.css'
+import "./app.css";
 
 const App = ({ children }) => {
   return (
