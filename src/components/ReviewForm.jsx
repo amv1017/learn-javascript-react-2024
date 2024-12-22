@@ -1,10 +1,11 @@
 "use client";
 
-import { useReducer } from "react";
-import classNames from "classnames";
-import { Counter } from "./Counter";
-import { useTheme, useAuth } from "@/hooks";
 import { limitAmount } from "@/functions";
+import { useAuth, useTheme } from "@/hooks";
+import { addReview } from "@/services/add-review";
+import classNames from "classnames";
+import { useReducer } from "react";
+import { Counter } from "./Counter";
 import styles from "./ReviewForm.module.css";
 
 const initialState = {
@@ -44,7 +45,7 @@ const reducer = (state, action) => {
   }
 };
 
-const ReviewForm = ({ onAddReview }) => {
+const ReviewForm = ({ restaurantId }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { theme } = useTheme();
@@ -55,8 +56,9 @@ const ReviewForm = ({ onAddReview }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await onAddReview({
+      await addReview(restaurantId, {
         ...state,
+        name: user.name,
         userId: user.id,
       });
     } catch (error) {

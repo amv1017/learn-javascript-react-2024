@@ -1,25 +1,13 @@
-import classNames from "classnames";
-import { ReviewStars } from "./ReviewStars";
 import { useTheme } from "@/hooks";
-import { useGetUsersQuery } from "@/store/features/api";
+import { getUsers } from "@/services/get-users";
+import classNames from "classnames";
 import styles from "./Review.module.css";
+import { ReviewStars } from "./ReviewStars";
 
-const Review = ({ id, rating, text, userId }) => {
+const Review = async ({ id, rating, text, userId }) => {
   const { theme } = useTheme();
 
-  const { data, isLoading, isError } = useGetUsersQuery(userId);
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
-
-  if (!data?.length) {
-    return;
-  }
+  const data = await getUsers();
 
   const name = data.find(({ id }) => id === userId).name;
 

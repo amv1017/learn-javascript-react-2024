@@ -1,37 +1,15 @@
 "use client";
 
-import { useCallback } from "react";
-import { Review } from "./Review";
-import {
-  useGetReviewsByRestaurantIdQuery,
-  useAddReviewMutation,
-} from "@/store/features/api";
 import { useAuth } from "@/hooks";
+import { getReviewsByRestaurantId } from "@/services/get-reviews-by-restaurant-id";
+import { use } from "react";
+import { Review } from "./Review";
 import { ReviewForm } from "./ReviewForm";
 
 const Reviews = ({ id }) => {
   const { user } = useAuth();
-  const {
-    data,
-    isLoading: isLoadingReviews,
-    isError,
-  } = useGetReviewsByRestaurantIdQuery(id);
-  const [addReview, { isLoading: isLoadingForm }] = useAddReviewMutation();
 
-  const handleAddReview = useCallback(
-    (review) => {
-      addReview({ restaurantId: id, review });
-    },
-    [addReview, id],
-  );
-
-  if (isLoadingReviews || isLoadingForm) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
+  const data = use(getReviewsByRestaurantId(id));
 
   return (
     <>
@@ -47,7 +25,7 @@ const Reviews = ({ id }) => {
       {user.name && (
         <>
           <hr />
-          <ReviewForm onAddReview={handleAddReview} />
+          <ReviewForm restaurantId={id} />
         </>
       )}
     </>

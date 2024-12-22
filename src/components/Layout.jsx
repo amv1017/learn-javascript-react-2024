@@ -1,9 +1,13 @@
-import { ProgressBar } from "./ProgressBar";
+"use client";
+
+import { useAuth } from "@/hooks";
+import { Suspense } from "react";
+import { Cart } from "./Cart";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { Cart } from "./Cart";
-import { useAuth } from "@/hooks";
-import { Navbar } from "./Navbar";
+import Loading from "./Loading";
+import { NavbarWrapper } from "./NavbarWrapper";
+import { ProgressBar } from "./ProgressBar";
 
 const Layout = ({ children }) => {
   const { user } = useAuth();
@@ -12,7 +16,9 @@ const Layout = ({ children }) => {
     <>
       <ProgressBar />
       <Header />
-      <Navbar />
+      <Suspense fallback={<Loading />}>
+        <NavbarWrapper />
+      </Suspense>
       {children}
       {user.name && <Cart />}
       <Footer />

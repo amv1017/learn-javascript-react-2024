@@ -1,8 +1,8 @@
 import { useAuth } from "@/hooks";
 import loginIcon from "@/static/login.svg";
 import userIcon from "@/static/user.svg";
-import styles from "./UserButton.module.css";
 import Image from "next/image";
+import styles from "./UserButton.module.css";
 
 const UserButton = () => {
   const { user, authHandler } = useAuth();

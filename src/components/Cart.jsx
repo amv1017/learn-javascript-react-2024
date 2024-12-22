@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
-import classNames from "classnames";
-import { CartItem } from "./CartItem";
 import { useTheme } from "@/hooks";
 import { selectCartItems } from "@/store/features/cart";
+import classNames from "classnames";
+import { useSelector } from "react-redux";
 import styles from "./Cart.module.css";
+import { CartItem } from "./CartItem";
 
 export const Cart = () => {
   const { theme } = useTheme();

@@ -4,3 +4,45 @@
   box-sizing: border-box;
   font-family: cursive;
 }
+
+body {
+  background: lightsteelblue;
+  position: relative;
+  min-height: 100vh;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px #fff dashed;
+}
+
+td {
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+}
+
+footer {
+  background: #65a;
+  color: #fff;
+  text-align: end;
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+}

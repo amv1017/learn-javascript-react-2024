@@ -1,11 +1,12 @@
 "use client";
 
+import { useAuth, useTheme } from "@/hooks";
+import { getDishById } from "@/services/get-dish-by-id";
 import classNames from "classnames";
 import Link from "next/link";
+import { use } from "react";
 import { DishCounter } from "./DishCounter";
-import { useAuth, useTheme } from "@/hooks";
 import styles from "./MenuDish.module.css";
-import { useGetDishByIdQuery } from "@/store/features/api";
 
 const MenuDish = ({ id }) => {
   const { user } = useAuth();
@@ -13,15 +14,7 @@ const MenuDish = ({ id }) => {
 
   const common = theme == "dark" ? styles.dark : styles.light;
 
-  const { data, isLoading, isError } = useGetDishByIdQuery(id);
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
+  const data = use(getDishById(id));
 
   if (!data?.name) {
     return;

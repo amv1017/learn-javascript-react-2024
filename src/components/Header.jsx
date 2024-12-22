@@ -1,8 +1,8 @@
+import { useTheme } from "@/hooks";
 import classNames from "classnames";
+import styles from "./Header.module.css";
 import { SwitchTheme } from "./SwitchTheme";
 import { UserButton } from "./UserButton";
-import { useTheme } from "@/hooks";
-import styles from "./Header.module.css";
 
 const Header = () => {
   const { theme } = useTheme();

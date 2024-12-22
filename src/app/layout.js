@@ -1,6 +1,8 @@
+import { Layout } from "@/components/Layout";
+import { AuthContextProvider, ThemeContextProvider } from "@/context";
+import { StoreProvider } from "@/store/StoreProvider";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { App } from "../app";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +15,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <App>{children}</App>
+        <StoreProvider>
+          <ThemeContextProvider>
+            <AuthContextProvider>
+              <Layout>{children}</Layout>
+            </AuthContextProvider>
+          </ThemeContextProvider>
+        </StoreProvider>
       </body>
     </html>
   );
