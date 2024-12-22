@@ -1,26 +1,9 @@
-import { DishCounter } from "./DishCounter";
-import { useGetDishesByRestaurantIdQuery } from "@/store/features/api";
+import { getDishesByRestaurantId } from "@/services/get-dishes-by-restaurant-id";
 import styles from "./CartItem.module.css";
+import { DishCounter } from "./DishCounter";
 
-export const CartItem = ({ id }) => {
-  const {
-    data: dish,
-    isLoading,
-    isError,
-  } = useGetDishesByRestaurantIdQuery(undefined, {
-    selectFromResult: (result) => ({
-      ...result,
-      data: result?.data?.find(({ id: restaurantId }) => restaurantId === id),
-    }),
-  });
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
+export const CartItem = async ({ id }) => {
+  const dish = await getDishesByRestaurantId(id);
 
   if (!dish?.name) {
     return;

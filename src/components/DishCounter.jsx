@@ -1,10 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Counter } from "./Counter";
+"use client";
+
 import {
   addToCart,
   removeFromCart,
   selectCartItemAmountById,
 } from "@/store/features/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { Counter } from "./Counter";
 
 const DishCounter = ({ id }) => {
   const dispatch = useDispatch();

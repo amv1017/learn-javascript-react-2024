@@ -1,13 +1,13 @@
 "use client";
 
-import classNames from "classnames";
-import { MenuDish } from "./MenuDish";
 import { useTheme } from "@/hooks";
 import goback from "@/static/go-back.svg";
-import styles from "./DishInfo.module.css";
-import { useParams } from "next/navigation";
-import Link from "next/link";
+import classNames from "classnames";
 import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import styles from "./DishInfo.module.css";
+import { MenuDish } from "./MenuDish";
 
 const DishInfo = () => {
   const { id } = useParams();

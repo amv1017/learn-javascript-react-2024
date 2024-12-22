@@ -1,10 +1,11 @@
 "use client";
 
-import classNames from "classnames";
-import { MenuDish } from "./MenuDish";
 import { useAuth, useTheme } from "@/hooks";
-import { useGetDishesByRestaurantIdQuery } from "@/store/features/api";
+import { getDishesByRestaurantId } from "@/services/get-dishes-by-restaurant-id";
+import classNames from "classnames";
+import { use } from "react";
 import styles from "./Menu.module.css";
+import { MenuDish } from "./MenuDish";
 
 const Menu = ({ id }) => {
   const { user } = useAuth();
@@ -12,15 +13,7 @@ const Menu = ({ id }) => {
 
   const common = theme == "dark" ? styles.dark : styles.light;
 
-  const { data, isLoading, isError } = useGetDishesByRestaurantIdQuery(id);
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
+  const data = use(getDishesByRestaurantId(id));
 
   return data ? (
     <table

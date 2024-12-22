@@ -1,28 +1,13 @@
-import { useParams } from "next/navigation";
-import classNames from "classnames";
 import { useTheme } from "@/hooks";
-import { useGetRestaurantByIdQuery } from "@/store/features/api";
-import styles from "./NavbarItem.module.css";
+import classNames from "classnames";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import styles from "./NavbarItem.module.css";
 
-export const NavbarItem = ({ id }) => {
+export const NavbarItem = ({ id, name }) => {
   const { theme } = useTheme();
 
   const { id: paramid } = useParams();
-
-  const { data, isLoading, isError } = useGetRestaurantByIdQuery(id);
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
-
-  if (!data?.name || !data?.description) {
-    return;
-  }
 
   return (
     <Link
@@ -33,7 +18,7 @@ export const NavbarItem = ({ id }) => {
         theme == "dark" ? styles.dark : styles.light,
       )}
     >
-      {data.name}
+      {name}
     </Link>
   );
 };
